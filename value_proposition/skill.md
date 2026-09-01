@@ -1,0 +1,1 @@
+﻿# Skill - value_proposition

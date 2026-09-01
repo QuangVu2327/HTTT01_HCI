@@ -2,16 +2,16 @@
 
 > Quy định AGENTS.md §6: mỗi lần trả lời phải cập nhật file này, đếm trên từng folder.
 
-- Cập nhật: 2026-09-01 13:20 (Asia/Ho_Chi_Minh)
-- User: 15
-- AI: 15
-- Tổng: 30
+- Cập nhật: 2026-09-01 12:35 (Asia/Ho_Chi_Minh)
+- User: 12
+- AI: 12
+- Tổng: 24
 
 ## Theo folder
 
 | Folder | User | AI | Tổng | Ghi chú |
 |---|---|---|---|---|
-| ` (root)` | 15 | 15 | 30 | Cập nhật persona template |
+| ` (root)` | 12 | 12 | 24 | AGENTS.md chuẩn hóa bố cục folder |
 | `persona/` | 0 | 0 | 0 | không đếm ở root (đếm riêng trong `persona/messages.md` nếu có) |
 | `wireframe/` | 6 | 6 | 12 | tạo folder, AGENTS, plan/skill, redesign Jira/Trello/Asana, small-team, gom về 1 folder |
 | `prototype/` | 0 | 0 | 0 | prototype có `agents.md` riêng, không đếm ở root |

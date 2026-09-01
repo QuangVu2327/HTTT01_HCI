@@ -79,9 +79,6 @@ Mỗi thư mục chức năng (module) trong dự án phải tuân thủ cấu t
 ```text
 module_name/
 ├── data/          # Lưu trữ toàn bộ dữ liệu, file thô, assets...
-│   ├── assets/    # Ảnh gốc, icons, tài nguyên đầu vào
-│   ├── output/    # Các tệp kết quả (HTML, CSS, Images, Reports...)
-│   └── raw/       # Dữ liệu thô (.csv, .json...)
 ├── skill.md       # Hướng dẫn thực hiện công việc (kiến thức, tư duy)
 ├── plan.md        # Kế hoạch triển khai cho module
 ├── changelog.md   # Nhật ký thay đổi
@@ -123,13 +120,6 @@ module_name/
       - `09_Design_Visual_Design.md` — Thiết kế trực quan (Visual Design).
       - `10_Evaluation.md` — Đánh giá độ khả dụng (Usability Evaluation).
     - **Bắt buộc đọc Knowledge trước khi làm việc:** Trước khi thực hiện bất kỳ yêu cầu, phân tích hoặc xây dựng tính năng nào liên quan đến thiết kế, đánh giá, persona, prototype, v.v., AI **bắt buộc** phải truy cập và đọc các tệp kiến thức chuyên môn tương ứng trong thư mục `knowledge/` để đảm bảo mọi giải pháp đều tuân thủ chuẩn khoa học của môn **Tương tác người - máy (HCI - CSC12106)**.
-
-## 6. Template Usage
-Khi bắt đầu một module mới, hãy sử dụng các tệp mẫu trong thư mục `templates/` để đảm bảo tính nhất quán:
-- Sử dụng `templates/folder.md` để tạo cấu trúc thư mục module.
-- Sử dụng `templates/skill.md` để hướng dẫn AI thực hiện các kỹ năng (skills).
-- Sử dụng `templates/plan.md` để lên kế hoạch (plan) cho module.
-- Sử dụng `templates/persona.md` (nếu cần) khi thực hiện tác vụ liên quan đến Persona.
 
 ## 7. Cơ chế sử dụng Rules (Lazy Loading)
 Khi thực hiện các tác vụ, hãy kiểm tra ngữ cảnh và nạp các bộ quy tắc tương ứng từ thư mục `rules/` nếu cần thiết để đảm bảo tính đồng nhất và tối ưu hóa token:

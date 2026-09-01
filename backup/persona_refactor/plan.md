@@ -42,15 +42,13 @@
     *   Rà soát theo checklist chất lượng và đưa kết quả vào báo cáo.
 
 ## 5. Tiêu chí chất lượng (Acceptance Criteria)
-(Đã chuyển vào Verification Strategy)
 
-## 6. Verification Strategy
 - Mỗi Persona data-driven có đầy đủ các yếu tố (Name, Demographics, Goals, Tasks, Pains, Wishes, Touchpoints, Tags, Quotes), mỗi yếu tố đều có **dẫn chứng số liệu** (mode/trung bình) từ phiếu.
 - Phân biệt rõ phiếu **MẪU** và phiếu **thật** (hoặc dữ liệu từ CSV).
 - Đủ tối thiểu **5 end-users mỗi vai trò** (hoặc ghi rõ giới hạn mẫu).
 - Nội dung Persona có thể trích trực tiếp vào phần Đánh giá báo cáo.
 
-## 7. Phân công & Timeline gợi ý
+## 6. Phân công & Timeline gợi ý
 
 | Bước | Người phụ trách | Dự kiến hoàn thành | Sản phẩm |
 |---|---|---|---|

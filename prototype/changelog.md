@@ -4,6 +4,14 @@
 
 ---
 
+## [2026-09-01] - Cấu hình Quy trình Ghi nhật ký (Logging Process)
+
+### Thay đổi hệ thống (System Configuration)
+- Thiết lập quy trình tự động cập nhật nhật ký (`changelog.md`, `messages.md`) riêng biệt cho từng thư mục con thay vì tập trung tại root.
+- Tạo mới `prototype/messages.md` và đồng bộ hóa cấu trúc ghi nhật ký trao đổi theo quy định tại `Agents.md`.
+
+---
+
 ## [2026-08-17] - Tổ chức lại Thư mục: Độc lập hóa Phân hệ Prototype
 
 ### Thay đổi cấu trúc (Reorganization)

@@ -1,0 +1,12 @@
+# Nhật ký Thay đổi - Gốc (Root Changelog)
+
+> Mọi thay đổi lớn liên quan đến cấu trúc dự án, quy định chung (`AGENTS.md`) và điều phối tổng thể đều được ghi lại tại đây.
+
+---
+
+## [2026-09-01] - Chuẩn hóa Bố cục Thư mục Dự án
+### Thay đổi cấu trúc & Quy định
+- Tạo mới file mẫu `templates/folder.md` định nghĩa cấu trúc chuẩn cho các module (data, skill, plan, changelog, messages).
+- Cập nhật `AGENTS.md` bổ sung mục **"5. Standard Folder Structure"** và re-number các mục tiếp theo (6-9).
+- Tất cả các module chức năng bắt buộc tuân thủ cấu trúc này. Các module cũ sẽ được tái cấu trúc dần.
+- Không có xung đột giữa cấu trúc mới và các nguyên tắc cũ (đã kiểm tra).

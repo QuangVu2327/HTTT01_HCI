@@ -1,0 +1,1 @@
+﻿# Changelog - value_proposition
