@@ -114,7 +114,7 @@ Quy trình phát triển dự án tuân thủ nghiêm ngặt theo 5 bước cố
 5. **Confirm & Log (Xác nhận & Nhật ký):**
    - Báo cáo kết quả chi tiết sau khi kiểm thử thành công cho người dùng.
    - Cập nhật dấu thời gian và tóm tắt công việc vào `changelog.md` sau khi hoàn thành mỗi milestone.
-   - Sau khi thực hiện update với mỗi folder, dùng file messages.md (tạo nếu chưa có). Cập nhật lại tổng cộng số tin nhắn người dùng đã đã gửi để làm việc với mỗi cho folder đó
+   - Với mỗi lần thực hiện trả lời, hãy cập nhật file messages.md (nếu chưa có thì tạo), đếm lại số lần đã trao đổi với người dùng (của người dùng và của AI). thực hiện đếm trên từng folder.
 ---
 
 ## 7. Tổng hợp quyết định đã chốt
