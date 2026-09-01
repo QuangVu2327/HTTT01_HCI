@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Nhóm 8 — TaskAssign Board</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--blue-rail:#0747A6;--bg:#F4F5F7;--card:#fff;--border:#DFE1E6;--text:#172B4D;--muted:#6B778C}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden}
+.app{display:flex;min-height:100vh}
+.rail{width:56px;background:var(--blue-rail);display:flex;flex-direction:column;align-items:center;padding:10px 0;gap:14px;flex-shrink:0}
+.rail-logo{width:32px;height:32px;background:#fff;border-radius:8px;display:grid;place-items:center;font-weight:800;color:var(--blue-rail);font-size:14px}
+.rail-icon{width:32px;height:32px;border-radius:6px;display:grid;place-items:center;color:#9FB0CC;cursor:pointer;font-size:16px}
+.rail-icon.active{background:rgba(255,255,255,.18);color:#fff}
+.rail-bottom{margin-top:auto;display:flex;flex-direction:column;gap:10px;align-items:center}
+.subnav{width:220px;background:#F4F5F7;border-right:1px solid var(--border);padding:14px 10px;flex-shrink:0}
+.project-badge{display:flex;gap:10px;align-items:center;margin-bottom:14px}
+.project-badge .icon{width:36px;height:36px;border-radius:8px;background:linear-gradient(135deg,#0052CC,#00B8D9);display:grid;place-items:center;color:#fff;font-size:16px}
+.project-badge b{font-size:13px;line-height:1.2}
+.project-badge span{font-size:11px;color:var(--muted)}
+.menu{list-style:none;display:flex;flex-direction:column;gap:2px}
+.menu li{padding:8px 10px;border-radius:6px;font-size:13px;color:var(--muted);cursor:pointer;display:flex;align-items:center;gap:8px}
+.menu li.active{background:#E9F2FF;color:#0052CC;font-weight:600}
+.menu li:hover{background:#E9EAEC}
+.main{flex:1;min-width:0;background:#fff;display:flex;flex-direction:column}
+.topbar{height:52px;background:#1F242E;color:#fff;display:flex;align-items:center;gap:12px;padding:0 14px}
+.topbar .create{background:#FF5630;color:#fff;border:none;padding:7px 14px;border-radius:999px;font-weight:700;font-size:13px;cursor:pointer}
+.topbar .search{flex:1;max-width:520px;margin:0 auto;background:#2C3440;border:1px solid #343C4A;border-radius:8px;display:flex;align-items:center;gap:8px;padding:7px 12px;color:#9AA4B5;font-size:13px}
+.topbar .search input{background:transparent;border:none;outline:none;color:#fff;width:100%}
+.topbar .avatar{width:28px;height:28px;border-radius:50%;background:#6554C0;color:#fff;display:grid;place-items:center;font-size:12px}
+.proj-head{padding:14px 18px 0;border-bottom:1px solid var(--border);background:#fff}
+.proj-title-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.proj-icon{width:42px;height:42px;border-radius:10px;background:#DEEBFF;display:grid;place-items:center;font-size:18px;border:1px solid #B6C2E1}
+.proj-title{font-size:18px;font-weight:700}
+.badge-track{background:#E3FCEF;color:#006644;padding:3px 8px;border-radius:999px;font-size:11px;font-weight:700}
+.people{display:flex;margin-left:auto;align-items:center;gap:8px}
+.people .stack{display:flex}
+.people .stack span{width:28px;height:28px;border-radius:50%;border:2px solid #fff;margin-left:-6px;background:#DFE1E6;display:grid;place-items:center;font-size:10px;font-weight:700}
+.btn{padding:7px 12px;border-radius:6px;border:1px solid var(--border);background:#fff;font-size:13px;font-weight:600;cursor:pointer}
+.btn-blue{background:#0052CC;color:#fff;border-color:#0052CC}
+.view-tabs{display:flex;gap:18px;margin-top:12px;overflow:auto}
+.view-tabs button{padding:8px 2px;background:none;border:none;border-bottom:2px solid transparent;font-size:13px;font-weight:500;color:var(--muted);cursor:pointer;white-space:nowrap}
+.view-tabs button.active{color:var(--text);border-color:#0052CC;font-weight:600}
+.toolbar{display:flex;gap:8px;align-items:center;padding:10px 18px;border-bottom:1px solid var(--border);flex-wrap:wrap;background:#fff}
+.toolbar .add-task{border:1px solid var(--border);padding:6px 10px;border-radius:6px;background:#fff;font-size:13px;font-weight:600}
+.toolbar .filter-pill{background:#E9F2FF;color:#0052CC;padding:6px 10px;border-radius:6px;font-size:12px;font-weight:600;display:flex;gap:6px;align-items:center}
+.board-wrap{flex:1;overflow:auto;background:#F4F5F7;padding:14px 12px}
+.board{display:flex;gap:12px;min-width:980px}
+.col{flex:1;min-width:240px;background:#F4F5F7;border-radius:8px;padding:6px}
+.col-head{font-size:11px;font-weight:700;letter-spacing:.04em;color:var(--muted);text-transform:uppercase;display:flex;align-items:center;gap:6px;padding:6px 4px}
+.card{background:var(--card);border:1px solid #E6E8EB;border-radius:8px;padding:10px;box-shadow:0 1px 1px rgba(9,30,66,.08);margin-bottom:8px;cursor:pointer;transition:.12s}
+.card:hover{box-shadow:0 4px 10px rgba(9,30,66,.12);border-color:#C1C7D0}
+.card-title{font-size:13px;line-height:1.35;font-weight:600;margin-bottom:7px}
+.label{font-size:10px;font-weight:800;letter-spacing:.03em;padding:2px 6px;border-radius:4px;display:inline-block;margin-bottom:6px}
+.label-yellow{background:#FFF0B3;color:#974F0C;border:1px solid #FFEB66}
+.label-orange{background:#FF8B00;color:#fff}
+.label-purple{background:#EAE6FF;color:#403294}
+.label-teal{background:#B3F5FF;color:#006580}
+.label-green{background:#E3FCEF;color:#006644;border:1px solid #ABF5D1}
+.label-blue{background:#DEEBFF;color:#0747A6;border:1px solid #B6C2E1}
+.meta{font-size:11px;color:var(--muted);display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.avatar-sm{width:20px;height:20px;border-radius:50%;background:#DFE1E6;display:inline-grid;place-items:center;font-size:10px;font-weight:700;border:1px solid #fff}
+.score{margin-left:auto;font-size:10px;font-weight:700;padding:2px 6px;border-radius:999px;color:#fff}
+.s-high{background:#00875A} .s-mid{background:#FFAB00;color:#172B4D} .s-low{background:#DE350B}
+.progress-mini{height:4px;background:#EBECF0;border-radius:999px;overflow:hidden;margin-top:6px}
+.progress-mini span{display:block;height:100%;background:#0052CC}
+.customize{position:fixed;right:0;top:52px;bottom:0;width:320px;background:#fff;border-left:1px solid var(--border);padding:14px;box-shadow:-8px 0 20px rgba(9,30,66,.08);overflow:auto}
+.customize h3{font-size:14px;margin-bottom:6px}
+.customize p{font-size:11px;color:var(--muted);margin-bottom:10px}
+.field{border:1px solid var(--border);border-radius:8px;padding:10px;display:flex;align-items:center;gap:8px;margin-bottom:8px;cursor:pointer}
+.field.active{border-color:#6554C0;box-shadow:0 0 0 2px rgba(101,84,192,.15)}
+.grid-add{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px}
+.grid-add div{border:1px solid var(--border);border-radius:8px;padding:10px;text-align:center;font-size:11px;font-weight:600}
+.grid-add div.active{border-color:#6554C0;background:#F4F0FF}
+@media(max-width:1100px){.customize{display:none} .board{min-width:700px}}
+</style>
+</head>
+<body>
+<div class="app">
+  <nav class="rail">
+    <div class="rail-logo">◈</div>
+    <div class="rail-icon active">🔍</div>
+    <div class="rail-icon">＋</div>
+    <div class="rail-icon">◫</div>
+    <div class="rail-bottom">
+      <div class="rail-icon">?</div>
+      <div class="avatar-sm" style="width:28px;height:28px;background:#FFABED">MA</div>
+    </div>
+  </nav>
+  <aside class="subnav">
+    <div class="project-badge">
+      <div class="icon">▦</div>
+      <div><b>Nhóm 8 — HCI</b><br><span>Dự án nhóm 4–5 người</span></div>
+    </div>
+    <ul class="menu">
+      <li>☰ Backlog</li>
+      <li class="active">▦ Board</li>
+      <li>📊 Báo cáo</li>
+      <li>👥 Thành viên</li>
+      <li>⚡ Gợi ý phân công</li>
+      <li>🐞 Vấn đề</li>
+      <li>〈〉 Kho lưu</li>
+      <li>＋ Thêm mục</li>
+      <li>⚙ Cài đặt</li>
+    </ul>
+  </aside>
+  <main class="main">
+    <div class="topbar">
+      <button class="create">＋ Tạo</button>
+      <div class="search">⌕ <input value="Tìm task, thành viên..." readonly></div>
+      <div class="avatar">MA</div>
+    </div>
+    <div class="proj-head">
+      <div class="proj-title-row">
+        <div class="proj-icon">🎓</div>
+        <div class="proj-title">Đồ án HCI — TaskAssign (Nhóm 8)</div>
+        <span style="color:#999">▾</span> <span>☆</span> <span class="badge-track">● Đúng tiến độ</span>
+        <div class="people">
+          <div class="stack"><span style="background:#FF5630;color:#fff">MA</span><span style="background:#00B8D9;color:#fff">HD</span><span style="background:#FFAB00">TH</span><span style="background:#57D9A3">HL</span><span>4</span></div>
+          <button class="btn btn-blue">▤ Chia sẻ</button>
+          <button class="btn">✦ Hỏi AI</button>
+          <button class="btn" style="border-color:#6554C0;outline:2px solid #6554C0">⬡ Tùy chỉnh</button>
+        </div>
+      </div>
+      <div class="view-tabs">
+        <button>◧ Tổng quan</button><button>≡ Danh sách</button><button class="active">▦ Board</button><button>⧉ Timeline</button><button>▭ Lịch</button><button>♢ Quy trình</button><button>◈ Dashboard</button><button>💬 Tin nhắn</button><button>⧉ Tệp</button><button>＋</button>
+      </div>
+    </div>
+    <div class="toolbar">
+      <button class="add-task">＋ Thêm task ▾</button>
+      <span class="filter-pill">☰ Lọc: 1 ✕</span>
+      <span style="font-size:12px;color:var(--muted)">⇅ Sắp xếp</span>
+      <span style="font-size:12px;color:var(--muted)">▦ Nhóm theo</span>
+      <span style="font-size:12px;color:var(--muted)">👁 Ẩn</span>
+      <span style="margin-left:auto;font-size:11px;color:var(--muted)">⚡ Auto-assign: <b style="color:#00875A">0.7 skill + 0.3 avail</b> · <span style="color:#0052CC;cursor:pointer">Chạy lại gợi ý →</span></span>
+    </div>
+    <div class="board-wrap">
+      <div class="board">
+        <div class="col">
+          <div class="col-head">CẦN LÀM <small>4</small> <span style="margin-left:auto">＋ ···</span></div>
+          <div class="card"><div class="card-title">Thiết kế UI dashboard</div><span class="label label-teal">DESIGN / FRONTEND</span><div class="meta"><span>◷ 6h</span><span>Ưu tiên cao ▲</span><span class="score s-high">1.00</span></div><div class="meta" style="margin-top:6px"><span class="avatar-sm" style="background:#FFAB00">TH</span> Thu Hà · 05/09</div></div>
+          <div class="card"><div class="card-title">Viết test cho thuật toán phân công</div><span class="label label-yellow">TESTING / BACKEND</span><div class="meta"><span>○ 0/3</span><span>◷ 4h</span><span class="score s-mid">0.53</span></div><div class="meta"><span class="avatar-sm" style="background:#00B8D9;color:#fff">HD</span> Hoàng Dũng</div></div>
+          <div class="card"><div class="card-title">Soạn báo cáo HCI — phần persona</div><span class="label label-orange">BA / REPORT</span><div class="meta"><span>◷ 5h</span><span>Due 10/09</span><span class="score s-high">0.94</span></div><div class="meta"><span class="avatar-sm" style="background:#FF5630;color:#fff">MA</span> Minh Anh</div></div>
+          <div class="card"><div class="card-title">Chuẩn bị slide thuyết trình</div><span class="label label-blue">SLIDE / DESIGN</span><div class="meta"><span>◷ 3h</span><span class="score s-mid">0.68</span></div><div class="meta"><span class="avatar-sm" style="background:#FFAB00">TH</span> Thu Hà</div></div>
+        </div>
+        <div class="col">
+          <div class="col-head">ĐANG LÀM <small>2</small> <span style="margin-left:auto">＋ ···</span></div>
+          <div class="card"><div class="card-title">Viết API mapping (weighted scoring)</div><span class="label label-purple">BACKEND / CORE</span><div class="meta"><span>✓</span><span>▲▲ cao</span><span>8h</span><span class="avatar-sm" style="background:#FF5630;color:#fff">MA</span> Minh Anh</div><div class="progress-mini"><span style="width:60%"></span></div><div class="meta" style="margin-top:4px"><span style="color:var(--muted)">TASK-15</span><span class="score s-high">1.00</span> <span style="font-size:10px;color:var(--muted)">· 60%</span></div></div>
+          <div class="card"><div class="card-title">Setup Supabase + Edge Functions</div><span class="label label-purple">BACKEND</span><span class="label label-blue">SUPABASE</span><div class="meta"><span>◷ 3h</span><span>▲ cao</span><span class="score s-high">0.88</span></div><div class="meta"><span class="avatar-sm" style="background:#57D9A3">HL</span> Hữu Long · 07/09</div></div>
+        </div>
+        <div class="col">
+          <div class="col-head">REVIEW <small>2</small> <span style="margin-left:auto">＋ ···</span></div>
+          <div class="card"><div class="card-title">Draft kế hoạch phân công tuần 1</div><span class="label label-orange">BA / PLAN</span><div class="meta"><span>☑</span><span>▲ trung bình</span><span class="avatar-sm" style="background:#FF5630;color:#fff">MA</span> Minh Anh</div></div>
+          <div class="card"><div class="card-title">Thiết kế poster nhóm</div><span class="label label-green">DESIGN</span><div class="meta"><span>10</span><span>11–21/06</span><span class="avatar-sm" style="background:#FFAB00">TH</span> Thu Hà</div></div>
+        </div>
+        <div class="col">
+          <div class="col-head">HOÀN THÀNH <small>3</small> <span style="margin-left:auto">＋ ···</span></div>
+          <div class="card" style="opacity:.9"><div class="card-title">Phỏng vấn 5 end-users (khảo sát)</div><span class="label label-green">✓ DONE — BA</span><div class="meta"><span>✓ Hoàn thành</span><span class="avatar-sm" style="background:#00B8D9;color:#fff">HD</span> Hoàng Dũng</div></div>
+          <div class="card" style="opacity:.9"><div class="card-title">Tạo Google Form + thu thập 15 phiếu</div><span class="label label-green">✓ DONE — BA</span><div class="meta"><span>✓ Hoàn thành</span><span class="avatar-sm" style="background:#FF5630;color:#fff">MA</span> Minh Anh</div></div>
+          <div class="card" style="opacity:.9"><div class="card-title">Định nghĩa tag kỹ năng dùng chung</div><span class="label label-green">✓ DONE — SETUP</span><div class="meta"><span>✓ Hoàn thành</span><span class="avatar-sm" style="background:#57D9A3">HL</span> Hữu Long</div></div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+<div class="customize">
+  <h3>Tùy chỉnh</h3>
+  <p>Xem và chỉnh dự án nhóm nhỏ</p>
+  <div class="field active"><span>⬡</span><div style="flex:1"><b>Fields</b><br><small style="color:var(--muted)">Score, ưu tiên, giờ rảnh</small></div><span>4 ›</span></div>
+  <div class="field"><span>▭</span><b>Sections</b><span style="margin-left:auto">16 ›</span></div>
+  <p style="margin-top:10px"><b>Thêm</b></p>
+  <div class="grid-add">
+    <div class="active">⬡<br>Fields</div><div>⚡<br>Rules</div><div>📄<br>Forms</div>
+    <div>🧩<br>Apps</div><div>✓<br>Template</div><div>◫<br>Bundles</div>
+  </div>
+  <div style="margin-top:14px;padding:10px;background:#E3FCEF;border-radius:8px;font-size:11px"><b style="color:#006644">Nhóm 4 người</b><br><span style="color:var(--muted)">Minh Anh (trưởng nhóm) · Dũng · Thu Hà · Hữu Long<br>Giảng viên: cô Lan — xem tiến độ</span></div>
+</div>
+</body>
+</html>
