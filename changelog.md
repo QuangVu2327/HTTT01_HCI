@@ -2,6 +2,13 @@
 
 > Mỗi thay đổi liên quan đến cấu trúc dự án, quy định chung (`AGENTS.md`) và điều phối tổng thể đều được ghi lại tại đây.
 
+## [2026-09-02] - Code Module Logs Initialized
+- Created `changelog.md` and `messages.md` in the `code/` module to track backend architecture, database schema, and Edge Functions development according to project standards.
+
+## [2026-09-02] - Storyboard PNG Tool Fixed & Regenerated
+- Fixed `storyboard_png.js` to load HTML via `file://` protocol, allowing proper resolution of relative image paths (`../assets/`).
+- Regenerated `storyboard.png` successfully with embedded images from assets.
+
 ## [2026-09-02] - Storyboard Rendered Successfully
 - Created structured storyboard JSON (`storyboard.json`) following Pixar's storytelling technique and executed `storyboard_renderer` tools to produce HTML and PNG assets.
 
