@@ -1,0 +1,49 @@
+{
+  "storyboardTitle": "Phân công công việc thông minh với Task Assignment System",
+  "persona": "Nguyễn Minh Anh (Trưởng nhóm dự án)",
+  "scenarioReference": "Scenario 2 (To-Be) & Value Proposition Canvas",
+  "panels": [
+    {
+      "panelNumber": 1,
+      "phase": "Once upon a time",
+      "visualDescription": "Minh Anh ngồi trước bàn học ngập tài liệu, trăn trở nhìn màn hình laptop hiển thị nhóm chat Messenger đang bùng nổ tin nhắn.",
+      "caption": "Minh Anh là trưởng nhóm sinh viên năm cuối luôn chịu áp lực điều phối các đồ án môn học lớn.",
+      "emotion": "Căng thẳng, lo âu"
+    },
+    {
+      "panelNumber": 2,
+      "phase": "Every day",
+      "visualDescription": "Minh Anh phải tự gõ thủ công từng dòng danh sách task vào Google Sheets và nhắn tin hỏi dò sở thích từng thành viên.",
+      "caption": "Mỗi kỳ dự án bắt đầu bằng việc phân công theo cảm tính, thiếu dữ liệu năng lực thực tế.",
+      "emotion": "Mệt mỏi, bất lực"
+    },
+    {
+      "panelNumber": 3,
+      "phase": "One day",
+      "visualDescription": "Sát deadline, thành viên Hoàng Dũng bị quá tải vì nhận nhầm task khó, trong khi không có ai hỗ trợ kịp thời.",
+      "caption": "Quản lý thủ công dẫn đến dồn việc cuối kỳ, xung đột và nguy cơ trễ hạn cao.",
+      "emotion": "Hoảng hốt, áp lực"
+    },
+    {
+      "panelNumber": 4,
+      "phase": "Because of that...",
+      "visualDescription": "Minh Anh mở giao diện Web Tool mới, nhập danh sách công việc và hồ sơ kỹ năng của toàn đội lên hệ thống.",
+      "caption": "Cô sử dụng hệ thống Task Assignment System để tập trung hóa dữ liệu quản lý nhóm.",
+      "emotion": "Tập trung, kỳ vọng"
+    },
+    {
+      "panelNumber": 5,
+      "phase": "Because of that...",
+      "visualDescription": "Hệ thống tự động chạy thuật toán ghép nối, hiển thị bảng điểm khớp kỹ năng và biểu đồ Gantt chart trực quan.",
+      "caption": "Chỉ với một cú click, phần mềm đề xuất phương án phân công tối ưu và cân bằng thời gian rảnh.",
+      "emotion": "Hồ hởi, nhẹ nhõm"
+    },
+    {
+      "panelNumber": 6,
+      "phase": "Until finally...",
+      "visualDescription": "Minh Anh mỉm cười tự tin bấm chốt kế hoạch, thành viên nhận thông báo rõ ràng trên điện thoại và dự án về đích thành công.",
+      "caption": "Công việc được phân công công bằng, minh bạch, giúp nhóm làm việc hiệu quả và chuyên nghiệp hơn.",
+      "emotion": "Tự tin, hạnh phúc"
+    }
+  ]
+}

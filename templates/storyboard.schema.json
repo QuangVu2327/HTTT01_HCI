@@ -1,0 +1,23 @@
+{
+  "type": "object",
+  "required": ["storyboardTitle", "persona", "scenarioReference", "panels"],
+  "properties": {
+    "storyboardTitle": { "type": "string" },
+    "persona": { "type": "string" },
+    "scenarioReference": { "type": "string" },
+    "panels": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["panelNumber", "phase", "visualDescription", "caption", "emotion"],
+        "properties": {
+          "panelNumber": { "type": "integer" },
+          "phase": { "type": "string" },
+          "visualDescription": { "type": "string" },
+          "caption": { "type": "string" },
+          "emotion": { "type": "string" }
+        }
+      }
+    }
+  }
+}

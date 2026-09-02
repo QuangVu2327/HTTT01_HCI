@@ -1,6 +1,6 @@
 # Nhật ký tương tác tổng hợp
 
-- Số lần tương tác tính đến [2026-09-02]: ~23 lần.
+- Số lần tương tác tính đến [2026-09-02]: ~27 lần.
 - Nội dung: 
   1. Kiểm tra Persona (dữ liệu vs thiết kế).
   2. Xây dựng quy trình tự động hóa Persona Cards (JSON -> HTML -> PNG).
@@ -10,4 +10,6 @@
   6. Xây dựng plan.md và skill.md cho `scenario_1` (As-Is) và `scenario_2` (To-Be) theo chuẩn HCI Lecture 6 và AGENTS.md.
   7. Thiết lập `templates/scenario.schema.json`, `templates/scenario.template.html` và bộ công cụ `.opencode/tools/scenario_renderer/` (`scenario_json.js`, `scenario_png.js`).
   8. Thực thi render thành công `scenario_asis` và `scenario_tobe` ra các tệp HTML và PNG hoàn chỉnh.
-  9. Cập nhật Changelog/Messages theo quy định dự án.
+  9. Thiết lập module `storyboard/` với `templates/storyboard.schema.json`, `templates/storyboard.template.html` và `.opencode/tools/storyboard_renderer/` (`storyboard_json.js`, `storyboard_png.js`).
+  10. Thực thi tạo tệp `storyboard.json` dựa trên kỹ thuật kể chuyện Pixar và render thành công ra các tệp `storyboard.html` và `storyboard.png` hoàn chỉnh.
+  11. Cập nhật Changelog/Messages theo quy định dự án.
