@@ -1,0 +1,6 @@
+/* @theme slides */
+:root { --primary:#0052CC; --hover:#0065FF; --bg:#F7F8F9; --card:#FFFFFF; --border:#DFE1E6; --text:#172B4D; --sub:#6B778C; }
+section { font-family: 'Inter','Be Vietnam Pro',system-ui,sans-serif; background: var(--bg); color: var(--text); }
+h1,h2{ color: var(--primary); } a{ color: var(--primary); }
+table th{ background: var(--primary); color:#fff; }
+blockquote{ border-left:4px solid var(--primary); background: var(--card); }
