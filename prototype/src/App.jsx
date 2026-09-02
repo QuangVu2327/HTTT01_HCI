@@ -21,30 +21,33 @@ import {
   Menu
 } from 'lucide-react';
 import { runAutoAssignment, calculateMatchScore } from './utils/assignmentAlgorithm';
+import ScoreTooltip from './components/ScoreTooltip';
+import Sidebar from './components/Sidebar';
 
 export default function App() {
   // 1. STATE TOÀN CỤC
   const [activeTab, setActiveTab] = useState('dashboard');
+  const [isSidebarOpen, setIsSidebarOpen] = useState(true); // Sidebar state
   const [skillPool, setSkillPool] = useState([
-    "Frontend", "Backend", "UI/UX Design", "Database", "Testing", "Figma", "TypeScript", "NodeJS"
+    "Thiết kế", "Phân tích", "Soạn thảo", "Nghiên cứu", "Thuyết trình", "Tài chính", "Hậu cần", "Lập kế hoạch", "Biên tập"
   ]);
   const [newSkillTag, setNewSkillTag] = useState('');
   
   // Danh sách Tasks
   const [tasks, setTasks] = useState([
-    { id: 1, name: "Thiết kế Wireframe UI/UX", hours: 8, tags: ["UI/UX Design", "Figma"], priority: "Cao", status: "Doing", assigneeId: 1 },
-    { id: 2, name: "Xây dựng Database Schema", hours: 6, tags: ["Database", "Backend"], priority: "Cao", status: "To Do", assigneeId: null },
-    { id: 3, name: "Viết Frontend Dashboard", hours: 12, tags: ["Frontend", "UI/UX Design"], priority: "Trung bình", status: "To Do", assigneeId: null },
-    { id: 4, name: "Viết Supabase Edge Function", hours: 8, tags: ["Backend", "TypeScript", "NodeJS"], priority: "Trung bình", status: "To Do", assigneeId: null },
-    { id: 5, name: "Kiểm thử tích hợp hệ thống", hours: 5, tags: ["Testing", "Frontend"], priority: "Thấp", status: "Done", assigneeId: 3 }
+    { id: 1, name: "Nghiên cứu thị trường mục tiêu", hours: 8, tags: ["Nghiên cứu", "Phân tích"], priority: "Cao", status: "Doing", assigneeId: 1 },
+    { id: 2, name: "Soạn thảo kế hoạch dự án", hours: 10, tags: ["Lập kế hoạch", "Soạn thảo"], priority: "Cao", status: "To Do", assigneeId: null },
+    { id: 3, name: "Thiết kế poster & tài liệu truyền thông", hours: 6, tags: ["Thiết kế", "Biên tập"], priority: "Trung bình", status: "To Do", assigneeId: null },
+    { id: 4, name: "Chuẩn bị báo cáo tài chính", hours: 5, tags: ["Tài chính", "Phân tích"], priority: "Trung bình", status: "To Do", assigneeId: null },
+    { id: 5, name: "Chuẩn bị slide thuyết trình", hours: 4, tags: ["Thuyết trình", "Thiết kế"], priority: "Thấp", status: "Done", assigneeId: 3 }
   ]);
   
   // Danh sách Thành viên
   const [members, setMembers] = useState([
-    { id: 1, name: "Nguyễn Văn A", email: "a.nguyen@example.com", availableHours: 15, tags: ["Frontend", "UI/UX Design", "Figma"] },
-    { id: 2, name: "Trần Thị B", email: "b.tran@example.com", availableHours: 12, tags: ["Database", "Backend", "NodeJS"] },
-    { id: 3, name: "Lê Hoàng C", email: "c.le@example.com", availableHours: 16, tags: ["Backend", "Testing", "TypeScript"] },
-    { id: 4, name: "Phạm Minh D", email: "d.pham@example.com", availableHours: 10, tags: ["Frontend", "Figma"] }
+    { id: 1, name: "Nguyễn Văn A", email: "a.nguyen@example.com", availableHours: 15, tags: ["Thiết kế", "Phân tích"] },
+    { id: 2, name: "Trần Thị B", email: "b.tran@example.com", availableHours: 12, tags: ["Phân tích", "Tài chính"] },
+    { id: 3, name: "Lê Hoàng C", email: "c.le@example.com", availableHours: 16, tags: ["Soạn thảo", "Nghiên cứu"] },
+    { id: 4, name: "Phạm Minh D", email: "d.pham@example.com", availableHours: 10, tags: ["Thiết kế", "Thuyết trình"] }
   ]);
 
   // Các state tương tác phục vụ Auto-Assignment & Modal
@@ -246,9 +249,9 @@ export default function App() {
   // Import mock CSV helpers
   const handleImportMockTasks = () => {
     const mockCSVTasks = [
-      { id: 101, name: "Phân tích tài liệu yêu cầu", hours: 6, tags: ["Testing", "UI/UX Design"], priority: "Cao", status: "To Do", assigneeId: null },
-      { id: 102, name: "Xây dựng REST API Core", hours: 10, tags: ["Backend", "TypeScript", "NodeJS"], priority: "Cao", status: "To Do", assigneeId: null },
-      { id: 103, name: "Tích hợp Supabase Realtime", hours: 8, tags: ["Backend", "Database"], priority: "Trung bình", status: "To Do", assigneeId: null },
+      { id: 101, name: "Khảo sát người dùng", hours: 6, tags: ["Nghiên cứu", "Phân tích"], priority: "Cao", status: "To Do", assigneeId: null },
+      { id: 102, name: "Viết nội dung truyền thông", hours: 10, tags: ["Soạn thảo", "Biên tập"], priority: "Cao", status: "To Do", assigneeId: null },
+      { id: 103, name: "Lập kế hoạch hậu cần", hours: 8, tags: ["Hậu cần", "Lập kế hoạch"], priority: "Trung bình", status: "To Do", assigneeId: null },
     ];
     setTasks([...tasks, ...mockCSVTasks]);
     triggerToast("Đã import thành công 3 công việc mẫu từ CSV giả lập!");
@@ -256,8 +259,8 @@ export default function App() {
 
   const handleImportMockMembers = () => {
     const mockCSVMembers = [
-      { id: 101, name: "Vũ Thị E", email: "e.vu@example.com", availableHours: 15, tags: ["UI/UX Design", "Testing", "Figma"] },
-      { id: 102, name: "Đỗ Hoàng F", email: "f.do@example.com", availableHours: 20, tags: ["Backend", "TypeScript", "Database", "NodeJS"] }
+      { id: 101, name: "Vũ Thị E", email: "e.vu@example.com", availableHours: 15, tags: ["Thiết kế", "Thuyết trình"] },
+      { id: 102, name: "Đỗ Hoàng F", email: "f.do@example.com", availableHours: 20, tags: ["Tài chính", "Phân tích", "Lập kế hoạch"] }
     ];
     setMembers([...members, ...mockCSVMembers]);
     triggerToast("Đã import thành công 2 nhân sự mẫu từ CSV giả lập!");
@@ -362,52 +365,19 @@ export default function App() {
   });
 
   return (
-    <div className="min-h-screen flex flex-col bg-atlassian-bg">
-      {/* HEADER BAR CHUẨN ATLASSIAN */}
-      <header className="sticky top-0 z-50 bg-white border-b border-atlassian-border px-6 py-4 flex flex-wrap items-center justify-between shadow-sm">
-        <div className="flex items-center space-x-3">
-          <div className="bg-atlassian-blue p-2 rounded-lg text-white">
-            <Sparkles className="w-6 h-6 animate-pulse" />
-          </div>
-          <div>
-            <h1 className="text-xl font-bold text-atlassian-text tracking-tight flex items-center">
-              TaskAssign AI
-              <span className="ml-2 text-xs bg-emerald-100 text-emerald-800 font-semibold px-2 py-0.5 rounded-full">
-                Phase 1 Active
-              </span>
-            </h1>
-            <p className="text-xs text-atlassian-textSub">Hệ thống Tự động Phân công Công việc Nhóm tối ưu</p>
-          </div>
-        </div>
-
-        {/* Thanh Điều Hướng Tabs */}
-        <nav className="flex space-x-1 mt-4 sm:mt-0">
-          {[
-            { id: 'dashboard', label: 'Bảng điều khiển', icon: Briefcase },
-            { id: 'tasks', label: '1. Danh sách Task', icon: Plus },
-            { id: 'members', label: '2. Thành viên', icon: Users },
-            { id: 'assignment', label: '3. Tự động Phân công', icon: Sparkles },
-            { id: 'kanban', label: '4. Bảng Kanban', icon: Trello },
-          ].map(tab => {
-            const Icon = tab.icon;
-            const isActive = activeTab === tab.id;
-            return (
-              <button
-                key={tab.id}
-                onClick={() => setActiveTab(tab.id)}
-                className={`flex items-center space-x-2 px-4 py-2.5 rounded-md text-sm font-medium transition-all duration-150 ${
-                  isActive 
-                    ? 'bg-blue-50 text-atlassian-blue border border-blue-200' 
-                    : 'text-atlassian-textSub hover:text-atlassian-text hover:bg-gray-100'
-                }`}
-              >
-                <Icon className="w-4 h-4" />
-                <span>{tab.label}</span>
-              </button>
-            );
-          })}
-        </nav>
-      </header>
+    <div className="min-h-screen flex bg-atlassian-bg">
+      <Sidebar isOpen={isSidebarOpen} setIsOpen={setIsSidebarOpen} activeTab={activeTab} setActiveTab={setActiveTab} />
+      
+      <div className="flex-1 flex flex-col min-w-0">
+        <header className="sticky top-0 z-40 bg-white border-b border-atlassian-border px-6 py-4 flex items-center justify-between shadow-sm">
+            <h2 className="text-xl font-bold text-atlassian-text uppercase tracking-wider">
+                {activeTab === 'dashboard' ? 'Tổng quan' : activeTab === 'tasks' ? 'Tasks' : activeTab === 'members' ? 'Nhân sự' : activeTab === 'assignment' ? 'Phân công AI' : 'Kanban'}
+            </h2>
+            <div className="flex items-center space-x-3">
+                <span className="text-[13px] bg-emerald-100 text-emerald-800 font-semibold px-2 py-0.5 rounded-full">Phase 1 Active</span>
+                <div className="w-8 h-8 rounded-full bg-atlassian-blue flex items-center justify-center text-white font-bold">MA</div>
+            </div>
+        </header>
 
       {/* THÔNG BÁO TOAST */}
       {showToast && (
@@ -415,22 +385,22 @@ export default function App() {
           {toastType === 'success' && <CheckCircle2 className="w-5 h-5 text-emerald-400" />}
           {toastType === 'error' && <AlertTriangle className="w-5 h-5 text-rose-400" />}
           {toastType === 'info' && <Info className="w-5 h-5 text-sky-400" />}
-          <span className="text-sm font-medium">{toastMessage}</span>
+          <span className="text-base font-medium">{toastMessage}</span>
         </div>
       )}
 
       {/* CẢNH BÁO QUÁ TẢI (LIVE WARNING PANEL) */}
       {overloads.length > 0 && (
         <div className="bg-amber-50 border-b border-amber-200 px-6 py-3 flex items-center justify-between text-amber-900">
-          <div className="flex items-center space-x-2 text-sm">
+          <div className="flex items-center space-x-2 text-base">
             <AlertTriangle className="w-5 h-5 text-amber-500 shrink-0" />
             <span>
-              <strong>Cảnh báo phân bổ lực lượng:</strong> Phát hiện <strong>{overloads.length} nhân viên</strong> bị quá tải tải lượng công việc ({overloads.map(o => `${o.name} trễ ${o.excess}h`).join(', ')}). Quản lý nên cân nhắc Manual Override hoặc giảm tải task.
+              <strong>Cảnh báo phân bổ lực lượng:</strong> Phát hiện <strong>{overloads.length} nhân viên</strong> bị quá tải tải lượng công việc.
             </span>
           </div>
           <button 
             onClick={() => setActiveTab('assignment')} 
-            className="text-xs bg-amber-600 text-white font-semibold px-3 py-1.5 rounded hover:bg-amber-700 shrink-0"
+            className="text-[13px] bg-amber-600 text-white font-semibold px-3 py-1.5 rounded hover:bg-amber-700 shrink-0"
           >
             Điều chỉnh Ngay
           </button>
@@ -438,7 +408,7 @@ export default function App() {
       )}
 
       {/* MAIN CONTENT AREA */}
-      <main className="flex-1 p-6 max-w-7xl w-full mx-auto">
+      <main className="flex-1 p-6">
         
         {/* TABS 1: DASHBOARD TỔNG QUAN */}
         {activeTab === 'dashboard' && (
@@ -988,11 +958,12 @@ export default function App() {
                                       {matchScore}% khớp
                                     </span>
                                   </td>
-                                  <td className="p-4 text-xs text-atlassian-textSub">
+                                  <td className="p-4 text-xs text-atlassian-textSub flex items-center justify-between">
                                     <div className="flex space-x-3">
-                                      <span>Kỹ năng khớp: <strong>{res.scores.skillScore}%</strong></span>
-                                      <span>Thời gian khớp: <strong>{res.scores.availabilityScore}%</strong></span>
+                                      <span>Kỹ năng: <strong>{res.scores.skillScore}%</strong></span>
+                                      <span>Giờ rảnh: <strong>{res.scores.availabilityScore}%</strong></span>
                                     </div>
+                                    <ScoreTooltip scores={res.scores} />
                                   </td>
                                 </tr>
                               );
@@ -1585,7 +1556,7 @@ export default function App() {
           </div>
         </div>
       )}
-
+      </div>
     </div>
   );
 }

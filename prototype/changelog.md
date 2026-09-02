@@ -4,7 +4,26 @@
 
 ---
 
-## [2026-09-01] - Cấu hình Quy trình Ghi nhật ký (Logging Process)
+## [2026-09-02] - Tối ưu hóa Kanban & Hoàn thành Kiểm định Test Cases
+### Cải tiến Tính năng & Kiểm thử (Atomic Implementation)
+- Tối ưu hóa bảng Kanban (giảm bớt thao tác rườm rà, hỗ trợ chuyển trạng thái task mượt mà ngay trên card).
+- Hoàn tất kiểm thử và cập nhật trạng thái toàn bộ 7 Test Cases (`TC-01` đến `TC-07`) trong tài liệu kế hoạch.
+- Chạy kiểm tra biên dịch sản phẩm thành công tuyệt đối (`npm run build`).
+
+---
+
+## [2026-09-02] - Phát triển `ScoreTooltip` & Tăng tính Minh bạch Thuật toán
+### Cải tiến Tính năng (Atomic Implementation)
+- Tạo component `ScoreTooltip.jsx` giúp giải thích chi tiết công thức Weighted Scoring (`0.7 * Skill + 0.3 * Availability`) ngay tại bảng preview kết quả phân công.
+- Tích hợp thành công component vào `AssignmentWorkspace.jsx` (`App.jsx`).
+- Kiểm tra biên dịch sản phẩm hoàn tất thành công (`npm run build`).
+
+---
+
+## [2026-09-02] - Tinh gọn Giao diện & Điều hướng
+### Tối ưu hóa UI (Atomic Change)
+- Rút gọn nhãn các tab điều hướng trên header (`Tổng quan`, `Tasks`, `Nhân sự`, `Phân công AI`, `Kanban`) giúp giao diện thoáng đãng, dễ thao tác và không bị rối mắt.
+- Chạy kiểm tra biên dịch thành công (`npm run build`).
 
 ### Thay đổi hệ thống (System Configuration)
 - Thiết lập quy trình tự động cập nhật nhật ký (`changelog.md`, `messages.md`) riêng biệt cho từng thư mục con thay vì tập trung tại root.
