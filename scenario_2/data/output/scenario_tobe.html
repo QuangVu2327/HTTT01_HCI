@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Scenario Flow - Phân công công việc tự động với Web Tool (To-Be)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; background-color: #F7F8F9; color: #172B4D; min-height: 100vh; padding: 2.5rem; }
+        .card { background: #FFFFFF; border: 1px solid #DFE1E6; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+        .badge-asis { background-color: #FFEBE6; color: #BF2600; }
+        .badge-tobe { background-color: #E3FCEF; color: #006644; }
+        .step-arrow { text-align: center; font-size: 1.5rem; color: #6B778C; margin: 0.5rem 0; }
+    </style>
+</head>
+<body>
+    <div class="max-w-4xl mx-auto card p-8">
+        <header class="border-b pb-6 mb-6 flex justify-between items-start">
+            <div>
+                <span class="px-3 py-1 text-xs font-bold rounded-full badge-tobe">
+                    To-Be Scenario
+                </span>
+                <h1 class="text-3xl font-bold mt-2 text-gray-900">Phân công công việc tự động với Web Tool (To-Be)</h1>
+                <p class="text-md text-blue-700 font-semibold mt-1">Nhân vật: Nguyễn Minh Anh (Trưởng nhóm) &amp; Trần Hoàng Dũng (Thành viên)</p>
+            </div>
+        </header>
+
+        <section class="grid grid-cols-2 gap-6 mb-8 bg-gray-50 p-6 rounded-lg border border-gray-200">
+            <div>
+                <h3 class="text-xs font-bold uppercase text-gray-500 mb-1">Bối cảnh (Context)</h3>
+                <p class="text-sm text-gray-700">Tuần thứ 3 của học kỳ, sử dụng hệ thống web quản lý và tự động phân công task (Task Assignment System).</p>
+            </div>
+            <div>
+                <h3 class="text-xs font-bold uppercase text-gray-500 mb-1">Mục tiêu (Goal)</h3>
+                <p class="text-sm text-gray-700">Tự động mapping công việc với thành viên phù hợp nhất, theo dõi tiến độ minh bạch và tránh quá tải.</p>
+            </div>
+        </section>
+
+        <section class="mb-8">
+            <h2 class="text-xl font-bold text-gray-800 mb-6 border-b pb-2">Chuỗi hành động & Tương tác (Workflow Steps)</h2>
+            <div class="space-y-4">
+                
+                <div class="card p-5 border-l-4 border-blue-600">
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="text-xs font-bold uppercase bg-gray-200 text-gray-700 px-2.5 py-1 rounded">Bước 1: Trưởng nhóm (Minh Anh)</span>
+                        
+                        <span class="text-xs bg-blue-50 text-blue-700 px-2 py-0.5 rounded font-medium">Hệ thống phản hồi</span>
+                        
+                    </div>
+                    <p class="text-gray-900 font-medium mb-2">Nhập danh sách task (tên, thời gian, kỹ năng yêu cầu) và hồ sơ năng lực/thời gian rảnh của thành viên lên hệ thống.</p>
+                    
+                    <p class="text-sm text-blue-900 bg-blue-50 p-3 rounded mt-2 border border-blue-200"><strong>Phản hồi/Trạng thái:</strong> Dữ liệu được lưu trữ tập trung và bảo mật trên Supabase.</p>
+                    
+                    
+                    <p class="text-xs text-gray-500 italic mt-2">Ghi chú: Nhập liệu nhanh chóng, gọn nhẹ.</p>
+                    
+                </div>
+                
+                <div class="step-arrow">↓</div>
+                
+                
+                <div class="card p-5 border-l-4 border-blue-600">
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="text-xs font-bold uppercase bg-gray-200 text-gray-700 px-2.5 py-1 rounded">Bước 2: Hệ thống (Web Tool)</span>
+                        
+                        <span class="text-xs bg-blue-50 text-blue-700 px-2 py-0.5 rounded font-medium">Hệ thống phản hồi</span>
+                        
+                    </div>
+                    <p class="text-gray-900 font-medium mb-2">Chạy thuật toán Weighted Scoring đối chiếu skill_score và availability_score để đề xuất phân công tối ưu.</p>
+                    
+                    <p class="text-sm text-blue-900 bg-blue-50 p-3 rounded mt-2 border border-blue-200"><strong>Phản hồi/Trạng thái:</strong> Hiển thị điểm số khớp (score) minh bạch cho từng cặp task - thành viên.</p>
+                    
+                    
+                    <p class="text-xs text-gray-500 italic mt-2">Ghi chú: Tự động hóa hoàn toàn việc đối chiếu năng lực.</p>
+                    
+                </div>
+                
+                <div class="step-arrow">↓</div>
+                
+                
+                <div class="card p-5 border-l-4 border-blue-600">
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="text-xs font-bold uppercase bg-gray-200 text-gray-700 px-2.5 py-1 rounded">Bước 3: Trưởng nhóm (Minh Anh)</span>
+                        
+                        <span class="text-xs bg-blue-50 text-blue-700 px-2 py-0.5 rounded font-medium">Hệ thống phản hồi</span>
+                        
+                    </div>
+                    <p class="text-gray-900 font-medium mb-2">Xem trước kết quả gợi ý, tinh chỉnh thủ công nhẹ nếu cần và bấm nút &#39;Chốt phân công&#39; màu Primary Blue (#0052CC).</p>
+                    
+                    <p class="text-sm text-blue-900 bg-blue-50 p-3 rounded mt-2 border border-blue-200"><strong>Phản hồi/Trạng thái:</strong> Hệ thống tự động cập nhật Gantt chart timeline tổng quan và hiển thị bảng phân công chuẩn xác.</p>
+                    
+                    
+                    <p class="text-xs text-gray-500 italic mt-2">Ghi chú: Quản lý ra quyết định nhanh chóng, chính xác.</p>
+                    
+                </div>
+                
+                <div class="step-arrow">↓</div>
+                
+                
+                <div class="card p-5 border-l-4 border-blue-600">
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="text-xs font-bold uppercase bg-gray-200 text-gray-700 px-2.5 py-1 rounded">Bước 4: Thành viên (Hoàng Dũng)</span>
+                        
+                        <span class="text-xs bg-blue-50 text-blue-700 px-2 py-0.5 rounded font-medium">Hệ thống phản hồi</span>
+                        
+                    </div>
+                    <p class="text-gray-900 font-medium mb-2">Đăng nhập xem danh sách task cá nhân và checklist rõ ràng trên điện thoại, nhận cảnh báo sớm nếu khối lượng công việc vượt mức khả dụng.</p>
+                    
+                    <p class="text-sm text-blue-900 bg-blue-50 p-3 rounded mt-2 border border-blue-200"><strong>Phản hồi/Trạng thái:</strong> Giao diện thân thiện, thông báo kịp thời giúp Dũng chủ động xin hỗ trợ trước khi trễ hạn.</p>
+                    
+                    
+                    <p class="text-xs text-gray-500 italic mt-2">Ghi chú: Thành viên nắm rõ nhiệm vụ, không bị động.</p>
+                    
+                </div>
+                
+                <div class="step-arrow">↓</div>
+                
+                
+                <div class="card p-5 border-l-4 border-blue-600">
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="text-xs font-bold uppercase bg-gray-200 text-gray-700 px-2.5 py-1 rounded">Bước 5: Giảng viên hướng dẫn (Minh Lan)</span>
+                        
+                        <span class="text-xs bg-blue-50 text-blue-700 px-2 py-0.5 rounded font-medium">Hệ thống phản hồi</span>
+                        
+                    </div>
+                    <p class="text-gray-900 font-medium mb-2">Mở xem bảng phân công và tiến độ thực tế của nhóm trong buổi hướng dẫn hàng tuần.</p>
+                    
+                    <p class="text-sm text-blue-900 bg-blue-50 p-3 rounded mt-2 border border-blue-200"><strong>Phản hồi/Trạng thái:</strong> Cung cấp cái nhìn tổng quan minh bạch, giúp giảng viên đánh giá đúng mức độ đóng góp của từng sinh viên.</p>
+                    
+                    
+                    <p class="text-xs text-gray-500 italic mt-2">Ghi chú: Giám sát hiệu quả, minh bạch.</p>
+                    
+                </div>
+                
+                
+            </div>
+        </section>
+
+        <section class="bg-gray-900 text-white p-6 rounded-lg">
+            <h3 class="text-xs font-bold uppercase text-gray-400 mb-1">Kết quả đạt được (Outcome)</h3>
+            <p class="text-base font-medium">Phân công công việc chính xác, công bằng đúng sở trường, không ai bị quá tải, dự án hoàn thành đúng hạn với độ minh bạch cao.</p>
+        </section>
+    </div>
+</body>
+</html>

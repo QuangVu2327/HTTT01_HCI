@@ -2,6 +2,16 @@
 
 > Mỗi thay đổi liên quan đến cấu trúc dự án, quy định chung (`AGENTS.md`) và điều phối tổng thể đều được ghi lại tại đây.
 
+## [2026-09-02] - Scenario Renderer Tools & Templates Established
+- Created `templates/scenario.schema.json` and `templates/scenario.template.html` for structured step-by-step scenario rendering.
+- Created `.opencode/tools/scenario_renderer/` containing `scenario_json.js` (validation + HTML render) and `scenario_png.js` (Puppeteer snapshot).
+- Standardized the scenario pipeline so JSON input directly maps sequential steps with visual arrows/flow.
+
+## [2026-09-02] - Scenario Modules Initialized (As-Is & To-Be)
+- Created comprehensive `plan.md` and `skill.md` for `scenario_1` (As-Is Scenario) based on Persona and unsolved Pains.
+- Created comprehensive `plan.md` and `skill.md` for `scenario_2` (To-Be Scenario) based on Value Proposition Canvas.
+- Initialized raw narrative scenario files (`scenario_asis.md`, `scenario_tobe.md`) following HCI Lecture 6 principles.
+
 ## [2026-09-02] - VP Canvas Generated
 - Generated VP Canvas JSONs derived directly from Persona data (Student Leader, Team Member, Instructor).
 - Executed rendering pipeline to create final HTML/PNG assets for VP Canvas module.

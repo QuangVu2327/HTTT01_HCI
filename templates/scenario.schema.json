@@ -1,0 +1,26 @@
+{
+  "type": "object",
+  "required": ["scenarioName", "scenarioType", "persona", "context", "goal", "steps", "outcome"],
+  "properties": {
+    "scenarioName": { "type": "string" },
+    "scenarioType": { "type": "string", "enum": ["As-Is", "To-Be"] },
+    "persona": { "type": "string" },
+    "context": { "type": "string" },
+    "goal": { "type": "string" },
+    "steps": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["stepNumber", "actor", "action"],
+        "properties": {
+          "stepNumber": { "type": "integer" },
+          "actor": { "type": "string" },
+          "action": { "type": "string" },
+          "systemResponse": { "type": "string" },
+          "note": { "type": "string" }
+        }
+      }
+    },
+    "outcome": { "type": "string" }
+  }
+}

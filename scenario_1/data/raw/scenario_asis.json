@@ -1,0 +1,45 @@
+{
+  "scenarioName": "Phân công công việc thủ công hiện tại (As-Is)",
+  "scenarioType": "As-Is",
+  "persona": "Nguyễn Minh Anh (Trưởng nhóm)",
+  "context": "Tuần thứ 3 của học kỳ, nhóm 4-5 người bắt đầu triển khai đồ án môn học lớn dưới áp lực deadline sát nút.",
+  "goal": "Phân công công việc cho các thành viên trong nhóm một cách hợp lý để bắt đầu thực hiện đồ án.",
+  "steps": [
+    {
+      "stepNumber": 1,
+      "actor": "Trưởng nhóm (Minh Anh)",
+      "action": "Triệu tập họp nhóm online qua Messenger, liệt kê danh sách các task dựa trên đề tài giáo viên giao.",
+      "systemResponse": "Không có hệ thống hỗ trợ, nhóm chat bị trôi tin nhắn và ý kiến rời rạc.",
+      "note": "Bước khởi đầu thiếu thông tin tập trung."
+    },
+    {
+      "stepNumber": 2,
+      "actor": "Thành viên & Trưởng nhóm",
+      "action": "Thảo luận và nhận việc dựa trên cảm tính, phỏng đoán năng lực cá nhân từ các học kỳ trước.",
+      "systemResponse": "Dũng nhận task code backend nhưng chưa có kinh nghiệm thực tế với công nghệ này.",
+      "note": "Rủi ro phân công sai sở trường."
+    },
+    {
+      "stepNumber": 3,
+      "actor": "Trưởng nhóm (Minh Anh)",
+      "action": "Tự thủ công tạo file Google Sheets, gõ danh sách task và phân công theo suy đoán cá nhân.",
+      "systemResponse": "File Sheets đơn thuần, không có tính năng tính toán khối lượng công việc hay theo dõi năng lực.",
+      "note": "Mất nhiều thời gian thiết lập thủ công."
+    },
+    {
+      "stepNumber": 4,
+      "actor": "Thành viên (Hoàng Dũng)",
+      "action": "Gặp khó khăn với task được giao, bị kẹt lại nhưng ngại báo cáo sớm.",
+      "systemResponse": "Công việc ngưng trệ mà nhóm không hề hay biết.",
+      "note": "Không có cơ chế cảnh báo sớm."
+    },
+    {
+      "stepNumber": 5,
+      "actor": "Trưởng nhóm (Minh Anh)",
+      "action": "Phải liên tục nhắn tin riêng từng thành viên hỏi 'đến đâu rồi?' để đốc thúc và cập nhật tiến độ.",
+      "systemResponse": "Tốn rất nhiều thời gian quản lý, gây áp lực tâm lý cho cả trưởng nhóm lẫn thành viên.",
+      "note": "Quản lý thủ công kém hiệu quả."
+    }
+  ],
+  "outcome": "Dự án chậm tiến độ, phát sinh xung đột do phân công không công bằng, thành viên quá tải sát deadline."
+}

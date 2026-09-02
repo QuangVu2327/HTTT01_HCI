@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Scenario Flow - Phân công công việc thủ công hiện tại (As-Is)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; background-color: #F7F8F9; color: #172B4D; min-height: 100vh; padding: 2.5rem; }
+        .card { background: #FFFFFF; border: 1px solid #DFE1E6; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+        .badge-asis { background-color: #FFEBE6; color: #BF2600; }
+        .badge-tobe { background-color: #E3FCEF; color: #006644; }
+        .step-arrow { text-align: center; font-size: 1.5rem; color: #6B778C; margin: 0.5rem 0; }
+    </style>
+</head>
+<body>
+    <div class="max-w-4xl mx-auto card p-8">
+        <header class="border-b pb-6 mb-6 flex justify-between items-start">
+            <div>
+                <span class="px-3 py-1 text-xs font-bold rounded-full badge-asis">
+                    As-Is Scenario
+                </span>
+                <h1 class="text-3xl font-bold mt-2 text-gray-900">Phân công công việc thủ công hiện tại (As-Is)</h1>
+                <p class="text-md text-blue-700 font-semibold mt-1">Nhân vật: Nguyễn Minh Anh (Trưởng nhóm)</p>
+            </div>
+        </header>
+
+        <section class="grid grid-cols-2 gap-6 mb-8 bg-gray-50 p-6 rounded-lg border border-gray-200">
+            <div>
+                <h3 class="text-xs font-bold uppercase text-gray-500 mb-1">Bối cảnh (Context)</h3>
+                <p class="text-sm text-gray-700">Tuần thứ 3 của học kỳ, nhóm 4-5 người bắt đầu triển khai đồ án môn học lớn dưới áp lực deadline sát nút.</p>
+            </div>
+            <div>
+                <h3 class="text-xs font-bold uppercase text-gray-500 mb-1">Mục tiêu (Goal)</h3>
+                <p class="text-sm text-gray-700">Phân công công việc cho các thành viên trong nhóm một cách hợp lý để bắt đầu thực hiện đồ án.</p>
+            </div>
+        </section>
+
+        <section class="mb-8">
+            <h2 class="text-xl font-bold text-gray-800 mb-6 border-b pb-2">Chuỗi hành động & Tương tác (Workflow Steps)</h2>
+            <div class="space-y-4">
+                
+                <div class="card p-5 border-l-4 border-orange-500">
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="text-xs font-bold uppercase bg-gray-200 text-gray-700 px-2.5 py-1 rounded">Bước 1: Trưởng nhóm (Minh Anh)</span>
+                        
+                        <span class="text-xs bg-blue-50 text-blue-700 px-2 py-0.5 rounded font-medium">Hệ thống phản hồi</span>
+                        
+                    </div>
+                    <p class="text-gray-900 font-medium mb-2">Triệu tập họp nhóm online qua Messenger, liệt kê danh sách các task dựa trên đề tài giáo viên giao.</p>
+                    
+                    <p class="text-sm text-blue-900 bg-blue-50 p-3 rounded mt-2 border border-blue-200"><strong>Phản hồi/Trạng thái:</strong> Không có hệ thống hỗ trợ, nhóm chat bị trôi tin nhắn và ý kiến rời rạc.</p>
+                    
+                    
+                    <p class="text-xs text-gray-500 italic mt-2">Ghi chú: Bước khởi đầu thiếu thông tin tập trung.</p>
+                    
+                </div>
+                
+                <div class="step-arrow">↓</div>
+                
+                
+                <div class="card p-5 border-l-4 border-orange-500">
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="text-xs font-bold uppercase bg-gray-200 text-gray-700 px-2.5 py-1 rounded">Bước 2: Thành viên &amp; Trưởng nhóm</span>
+                        
+                        <span class="text-xs bg-blue-50 text-blue-700 px-2 py-0.5 rounded font-medium">Hệ thống phản hồi</span>
+                        
+                    </div>
+                    <p class="text-gray-900 font-medium mb-2">Thảo luận và nhận việc dựa trên cảm tính, phỏng đoán năng lực cá nhân từ các học kỳ trước.</p>
+                    
+                    <p class="text-sm text-blue-900 bg-blue-50 p-3 rounded mt-2 border border-blue-200"><strong>Phản hồi/Trạng thái:</strong> Dũng nhận task code backend nhưng chưa có kinh nghiệm thực tế với công nghệ này.</p>
+                    
+                    
+                    <p class="text-xs text-gray-500 italic mt-2">Ghi chú: Rủi ro phân công sai sở trường.</p>
+                    
+                </div>
+                
+                <div class="step-arrow">↓</div>
+                
+                
+                <div class="card p-5 border-l-4 border-orange-500">
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="text-xs font-bold uppercase bg-gray-200 text-gray-700 px-2.5 py-1 rounded">Bước 3: Trưởng nhóm (Minh Anh)</span>
+                        
+                        <span class="text-xs bg-blue-50 text-blue-700 px-2 py-0.5 rounded font-medium">Hệ thống phản hồi</span>
+                        
+                    </div>
+                    <p class="text-gray-900 font-medium mb-2">Tự thủ công tạo file Google Sheets, gõ danh sách task và phân công theo suy đoán cá nhân.</p>
+                    
+                    <p class="text-sm text-blue-900 bg-blue-50 p-3 rounded mt-2 border border-blue-200"><strong>Phản hồi/Trạng thái:</strong> File Sheets đơn thuần, không có tính năng tính toán khối lượng công việc hay theo dõi năng lực.</p>
+                    
+                    
+                    <p class="text-xs text-gray-500 italic mt-2">Ghi chú: Mất nhiều thời gian thiết lập thủ công.</p>
+                    
+                </div>
+                
+                <div class="step-arrow">↓</div>
+                
+                
+                <div class="card p-5 border-l-4 border-orange-500">
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="text-xs font-bold uppercase bg-gray-200 text-gray-700 px-2.5 py-1 rounded">Bước 4: Thành viên (Hoàng Dũng)</span>
+                        
+                        <span class="text-xs bg-blue-50 text-blue-700 px-2 py-0.5 rounded font-medium">Hệ thống phản hồi</span>
+                        
+                    </div>
+                    <p class="text-gray-900 font-medium mb-2">Gặp khó khăn với task được giao, bị kẹt lại nhưng ngại báo cáo sớm.</p>
+                    
+                    <p class="text-sm text-blue-900 bg-blue-50 p-3 rounded mt-2 border border-blue-200"><strong>Phản hồi/Trạng thái:</strong> Công việc ngưng trệ mà nhóm không hề hay biết.</p>
+                    
+                    
+                    <p class="text-xs text-gray-500 italic mt-2">Ghi chú: Không có cơ chế cảnh báo sớm.</p>
+                    
+                </div>
+                
+                <div class="step-arrow">↓</div>
+                
+                
+                <div class="card p-5 border-l-4 border-orange-500">
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="text-xs font-bold uppercase bg-gray-200 text-gray-700 px-2.5 py-1 rounded">Bước 5: Trưởng nhóm (Minh Anh)</span>
+                        
+                        <span class="text-xs bg-blue-50 text-blue-700 px-2 py-0.5 rounded font-medium">Hệ thống phản hồi</span>
+                        
+                    </div>
+                    <p class="text-gray-900 font-medium mb-2">Phải liên tục nhắn tin riêng từng thành viên hỏi &#39;đến đâu rồi?&#39; để đốc thúc và cập nhật tiến độ.</p>
+                    
+                    <p class="text-sm text-blue-900 bg-blue-50 p-3 rounded mt-2 border border-blue-200"><strong>Phản hồi/Trạng thái:</strong> Tốn rất nhiều thời gian quản lý, gây áp lực tâm lý cho cả trưởng nhóm lẫn thành viên.</p>
+                    
+                    
+                    <p class="text-xs text-gray-500 italic mt-2">Ghi chú: Quản lý thủ công kém hiệu quả.</p>
+                    
+                </div>
+                
+                
+            </div>
+        </section>
+
+        <section class="bg-gray-900 text-white p-6 rounded-lg">
+            <h3 class="text-xs font-bold uppercase text-gray-400 mb-1">Kết quả đạt được (Outcome)</h3>
+            <p class="text-base font-medium">Dự án chậm tiến độ, phát sinh xung đột do phân công không công bằng, thành viên quá tải sát deadline.</p>
+        </section>
+    </div>
+</body>
+</html>

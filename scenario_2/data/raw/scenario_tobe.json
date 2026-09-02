@@ -1,0 +1,45 @@
+{
+  "scenarioName": "Phân công công việc tự động với Web Tool (To-Be)",
+  "scenarioType": "To-Be",
+  "persona": "Nguyễn Minh Anh (Trưởng nhóm) & Trần Hoàng Dũng (Thành viên)",
+  "context": "Tuần thứ 3 của học kỳ, sử dụng hệ thống web quản lý và tự động phân công task (Task Assignment System).",
+  "goal": "Tự động mapping công việc với thành viên phù hợp nhất, theo dõi tiến độ minh bạch và tránh quá tải.",
+  "steps": [
+    {
+      "stepNumber": 1,
+      "actor": "Trưởng nhóm (Minh Anh)",
+      "action": "Nhập danh sách task (tên, thời gian, kỹ năng yêu cầu) và hồ sơ năng lực/thời gian rảnh của thành viên lên hệ thống.",
+      "systemResponse": "Dữ liệu được lưu trữ tập trung và bảo mật trên Supabase.",
+      "note": "Nhập liệu nhanh chóng, gọn nhẹ."
+    },
+    {
+      "stepNumber": 2,
+      "actor": "Hệ thống (Web Tool)",
+      "action": "Chạy thuật toán Weighted Scoring đối chiếu skill_score và availability_score để đề xuất phân công tối ưu.",
+      "systemResponse": "Hiển thị điểm số khớp (score) minh bạch cho từng cặp task - thành viên.",
+      "note": "Tự động hóa hoàn toàn việc đối chiếu năng lực."
+    },
+    {
+      "stepNumber": 3,
+      "actor": "Trưởng nhóm (Minh Anh)",
+      "action": "Xem trước kết quả gợi ý, tinh chỉnh thủ công nhẹ nếu cần và bấm nút 'Chốt phân công' màu Primary Blue (#0052CC).",
+      "systemResponse": "Hệ thống tự động cập nhật Gantt chart timeline tổng quan và hiển thị bảng phân công chuẩn xác.",
+      "note": "Quản lý ra quyết định nhanh chóng, chính xác."
+    },
+    {
+      "stepNumber": 4,
+      "actor": "Thành viên (Hoàng Dũng)",
+      "action": "Đăng nhập xem danh sách task cá nhân và checklist rõ ràng trên điện thoại, nhận cảnh báo sớm nếu khối lượng công việc vượt mức khả dụng.",
+      "systemResponse": "Giao diện thân thiện, thông báo kịp thời giúp Dũng chủ động xin hỗ trợ trước khi trễ hạn.",
+      "note": "Thành viên nắm rõ nhiệm vụ, không bị động."
+    },
+    {
+      "stepNumber": 5,
+      "actor": "Giảng viên hướng dẫn (Minh Lan)",
+      "action": "Mở xem bảng phân công và tiến độ thực tế của nhóm trong buổi hướng dẫn hàng tuần.",
+      "systemResponse": "Cung cấp cái nhìn tổng quan minh bạch, giúp giảng viên đánh giá đúng mức độ đóng góp của từng sinh viên.",
+      "note": "Giám sát hiệu quả, minh bạch."
+    }
+  ],
+  "outcome": "Phân công công việc chính xác, công bằng đúng sở trường, không ai bị quá tải, dự án hoàn thành đúng hạn với độ minh bạch cao."
+}
