@@ -2,6 +2,9 @@
 
 > Mỗi thay đổi liên quan đến cấu trúc dự án, quy định chung (`AGENTS.md`) và điều phối tổng thể đều được ghi lại tại đây.
 
+## [2026-09-02] - As-Is & To-Be Scenarios Rendered Successfully
+- Generated structured JSON (`scenario_asis.json`, `scenario_tobe.json`) and executed `scenario_renderer` tools to produce HTML and PNG assets for both `scenario_1` and `scenario_2`.
+
 ## [2026-09-02] - Scenario Renderer Tools & Templates Established
 - Created `templates/scenario.schema.json` and `templates/scenario.template.html` for structured step-by-step scenario rendering.
 - Created `.opencode/tools/scenario_renderer/` containing `scenario_json.js` (validation + HTML render) and `scenario_png.js` (Puppeteer snapshot).
