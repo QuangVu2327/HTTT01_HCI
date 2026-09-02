@@ -7,15 +7,15 @@ async function runStoryboardPng(htmlPath) {
         throw new Error('HTML file not found: ' + htmlPath);
     }
     
-    const htmlContent = fs.readFileSync(htmlPath, 'utf8');
-    const outputDir = path.dirname(htmlPath);
-    const baseName = path.basename(htmlPath, '.html');
+    const absoluteHtmlPath = path.resolve(htmlPath);
+    const outputDir = path.dirname(absoluteHtmlPath);
+    const baseName = path.basename(absoluteHtmlPath, '.html');
     const pngPath = path.join(outputDir, baseName + '.png');
 
-    // 4. Snapshot
+    // 4. Snapshot using file:// protocol so relative assets (like images) resolve correctly
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
-    await page.setContent(htmlContent, { waitUntil: 'networkidle0' });
+    await page.goto('file://' + absoluteHtmlPath, { waitUntil: 'networkidle0' });
     await page.evaluate(() => document.fonts.ready);
     await page.screenshot({ path: pngPath, fullPage: true });
     await browser.close();
