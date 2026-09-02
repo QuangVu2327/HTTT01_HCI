@@ -1,0 +1,13 @@
+{
+  "type": "object",
+  "required": ["persona", "jobs", "pains", "gains", "productsServices", "painRelievers", "gainCreators"],
+  "properties": {
+    "persona": { "type": "string" },
+    "jobs": { "type": "array", "items": { "type": "string" } },
+    "pains": { "type": "array", "items": { "type": "string" } },
+    "gains": { "type": "array", "items": { "type": "string" } },
+    "productsServices": { "type": "array", "items": { "type": "string" } },
+    "painRelievers": { "type": "array", "items": { "type": "string" } },
+    "gainCreators": { "type": "array", "items": { "type": "string" } }
+  }
+}

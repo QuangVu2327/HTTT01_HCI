@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Value Proposition Canvas - All Personas</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; background-color: #F7F8F9; color: #172B4D; min-height: 100vh; padding: 2rem; }
+        .canvas-container { margin-bottom: 4rem; }
+        .canvas { background: #FFFFFF; border: 2px solid #DFE1E6; border-radius: 8px; display: grid; grid-template-columns: 1fr 1fr; gap: 2px; background-color: #DFE1E6; }
+        .col { background: #FFFFFF; padding: 2rem; }
+        .section-title { font-weight: 700; color: #42526E; text-transform: uppercase; font-size: 0.9rem; margin-bottom: 0.5rem; }
+    </style>
+</head>
+<body>
+    <h1 class="text-4xl font-bold mb-10 text-center">Value Proposition Canvas - Tổng hợp</h1>
+    <% personas.forEach(p => { %>
+    <div class="canvas-container">
+        <h2 class="text-3xl font-bold mb-6 text-blue-800 text-center"><%= p.persona %></h2>
+        <div class="canvas">
+            <div class="col">
+                <h3 class="text-2xl font-bold mb-4 text-blue-700">Value Map</h3>
+                <div class="mb-6"><p class="section-title">Products & Services</p><ul class="list-disc pl-5"><% p.productsServices.forEach(i => { %><li><%= i %></li><% }) %></ul></div>
+                <div class="mb-6"><p class="section-title text-red-600">Pain Relievers</p><ul class="list-disc pl-5"><% p.painRelievers.forEach(i => { %><li><%= i %></li><% }) %></ul></div>
+                <div class="mb-6"><p class="section-title text-green-600">Gain Creators</p><ul class="list-disc pl-5"><% p.gainCreators.forEach(i => { %><li><%= i %></li><% }) %></ul></div>
+            </div>
+            <div class="col">
+                <h3 class="text-2xl font-bold mb-4 text-blue-700">User Profile</h3>
+                <div class="mb-6"><p class="section-title">Customer Jobs</p><ul class="list-disc pl-5"><% p.jobs.forEach(i => { %><li><%= i %></li><% }) %></ul></div>
+                <div class="mb-6"><p class="section-title text-red-600">Pains</p><ul class="list-disc pl-5"><% p.pains.forEach(i => { %><li><%= i %></li><% }) %></ul></div>
+                <div class="mb-6"><p class="section-title text-green-600">Gains</p><ul class="list-disc pl-5"><% p.gains.forEach(i => { %><li><%= i %></li><% }) %></ul></div>
+            </div>
+        </div>
+    </div>
+    <% }) %>
+</body>
+</html>

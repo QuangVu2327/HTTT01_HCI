@@ -1,18 +1,9 @@
-# messages.md — HTTT01_HCI (root)
+# Nhật ký tương tác tổng hợp
 
-> Quy định AGENTS.md §6: mỗi lần trả lời phải cập nhật file này, đếm trên từng folder.
-
-- Cập nhật: 2026-09-01 13:20 (Asia/Ho_Chi_Minh)
-- User: 15
-- AI: 15
-- Tổng: 30
-
-## Theo folder
-
-| Folder | User | AI | Tổng | Ghi chú |
-|---|---|---|---|---|
-| ` (root)` | 15 | 15 | 30 | Cập nhật persona template |
-| `persona/` | 0 | 0 | 0 | không đếm ở root (đếm riêng trong `persona/messages.md` nếu có) |
-| `wireframe/` | 6 | 6 | 12 | tạo folder, AGENTS, plan/skill, redesign Jira/Trello/Asana, small-team, gom về 1 folder |
-| `prototype/` | 0 | 0 | 0 | prototype có `agents.md` riêng, không đếm ở root |
-| `scenario_1/`, `scenario_2/`, `storyboard/`, `value_proposition/` | 0 | 0 | 0 | chưa thao tác |
+- Tổng số lần tương tác tính đến [2026-09-02]: ~15 lần.
+- Nội dung: 
+  1. Kiểm tra Persona (dữ liệu vs thiết kế).
+  2. Xây dựng quy trình tự động hóa Persona Cards (JSON -> HTML -> PNG).
+  3. Xây dựng quy trình tự động hóa Value Proposition Canvas (JSON -> HTML -> PNG).
+  4. Cấu trúc lại module `persona` (survey/final_persona).
+  5. Cập nhật Changelog/Messages theo quy định dự án.

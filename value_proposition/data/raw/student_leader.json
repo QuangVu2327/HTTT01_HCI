@@ -1,0 +1,9 @@
+{
+  "persona": "Nguyễn Minh Anh (Trưởng nhóm)",
+  "jobs": ["Nhập danh sách nhiệm vụ và kỹ năng yêu cầu vào hệ thống", "Đánh giá hồ sơ kỹ năng của thành viên", "Xem xét và tinh chỉnh bản phân công đề xuất bởi thuật toán", "Theo dõi Gantt chart và xuất timeline tổng quan cho cả nhóm"],
+  "pains": ["Phân công công việc dựa trên cảm tính thay vì dữ liệu năng lực", "Mất quá nhiều thời gian để nhắc nhở tiến độ và đốc thúc thành viên", "Khó khăn trong việc phát hiện ai đang quá tải cho đến sát hạn chót"],
+  "gains": ["Phân công công việc công bằng, minh bạch dựa trên năng lực thực tế", "Theo dõi tiến độ tổng thể của dự án mà không cần nhắc nhở từng thành viên", "Phát hiện sớm các rủi ro quá tải hoặc trễ deadline", "Một bảng điều khiển tập trung", "Thông báo tự động về tiến độ", "Hệ thống đề xuất phân công thông minh"],
+  "productsServices": ["Hệ thống phân công tự động dựa trên kỹ năng", "Bảng điều khiển tiến độ trực quan", "Cảnh báo quá tải/trễ deadline", "Công cụ xuất Gantt chart"],
+  "painRelievers": ["Thuật toán tự động ghép nối công việc phù hợp với năng lực", "Thông báo nhắc nhở tiến độ tự động", "Dashboard cảnh báo rủi ro quá tải trước hạn"],
+  "gainCreators": ["Hệ thống phân công minh bạch", "Gantt chart tự động cập nhật", "Dashboard quản lý tập trung"]
+}
