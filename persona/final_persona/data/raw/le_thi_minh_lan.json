@@ -1,0 +1,18 @@
+{
+  "name": "Lê Thị Minh Lan",
+  "occupation": "Giảng viên hướng dẫn dự án",
+  "age": 35,
+  "experience": "10 năm kinh nghiệm giảng dạy",
+  "workplace": "Trường đại học",
+  "primaryDevice": "Laptop / Desktop",
+  "photo": "https://i.pravatar.cc/150?u=minhlan",
+  "profileSummary": "Hướng dẫn nhiều nhóm sinh viên cùng lúc mỗi học kỳ; quan tâm đến quy trình làm việc nhóm, không chỉ kết quả cuối kỳ.",
+  "goals": ["Theo dõi tiến độ thực tế", "Phát hiện sớm nhóm nguy cơ trễ deadline", "Đánh giá mức độ đóng góp"],
+  "tasks": ["Xem bảng phân công", "Xem Gantt chart", "Góp ý tiến độ", "Phân quyền cho nhóm trưởng"],
+  "painPoints": ["Không có kênh tổng hợp tiến độ", "Chỉ nhận báo cáo rời rạc", "Khó biết ai thực sự làm việc"],
+  "wishes": ["Báo cáo tiến độ tự động", "So sánh kế hoạch vs thực tế", "Đánh giá đóng góp từng thành viên"],
+  "behaviors": ["Thường xem bảng phân công trong buổi hướng dẫn", "Ngại sử dụng công cụ phức tạp", "Thích sự minh bạch trong đóng góp"],
+  "touchpoints": ["Email", "Google Sheets", "Buổi họp hướng dẫn trực tiếp"],
+  "motivations": "Muốn đảm bảo các nhóm làm việc thực chất và đạt kết quả tốt nhất.",
+  "representativeQuote": "Tôi muốn thấy tiến độ thực tế của nhóm chứ không chỉ bản báo cáo cuối kỳ."
+}

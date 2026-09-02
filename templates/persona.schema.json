@@ -1,0 +1,22 @@
+{
+  "type": "object",
+  "required": ["name", "occupation", "profileSummary", "goals", "tasks", "painPoints", "motivations"],
+  "properties": {
+    "name": { "type": "string" },
+    "occupation": { "type": "string" },
+    "age": { "type": "integer" },
+    "experience": { "type": "string" },
+    "workplace": { "type": "string" },
+    "primaryDevice": { "type": "string" },
+    "photo": { "type": "string" },
+    "profileSummary": { "type": "string" },
+    "goals": { "type": "array", "items": { "type": "string" } },
+    "tasks": { "type": "array", "items": { "type": "string" } },
+    "painPoints": { "type": "array", "items": { "type": "string" } },
+    "wishes": { "type": "array", "items": { "type": "string" } },
+    "behaviors": { "type": "array", "items": { "type": "string" } },
+    "touchpoints": { "type": "array", "items": { "type": "string" } },
+    "representativeQuote": { "type": "string" },
+    "motivations": { "type": "string" }
+  }
+}

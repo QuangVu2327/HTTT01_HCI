@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Persona: <%= name %></title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; background-color: #F7F8F9; color: #172B4D; min-height: 100vh; padding-bottom: 2rem; }
+        .card { background: #FFFFFF; border: 1px solid #DFE1E6; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); min-height: 95vh; }
+        .bg-primary { background-color: #0052CC; }
+        .section-title { font-weight: 700; color: #42526E; border-bottom: 2px solid #DFE1E6; padding-bottom: 0.5rem; margin-bottom: 1rem; text-transform: uppercase; font-size: 0.85rem; }
+    </style>
+</head>
+<body class="p-8">
+    <div class="card p-8 max-w-5xl mx-auto">
+        <header class="flex items-center gap-8 pb-8 mb-8 border-b border-gray-200">
+            <img src="<%= photo %>" alt="<%= name %>" class="w-32 h-32 rounded-full border-4 border-white shadow-lg">
+            <div>
+                <h1 class="text-4xl font-bold text-gray-900"><%= name %></h1>
+                <p class="text-xl text-blue-700 font-semibold"><%= occupation %></p>
+                <div class="mt-4 grid grid-cols-2 gap-4 text-sm text-gray-600">
+                    <p><strong>Tuổi:</strong> <%= age %></p>
+                    <p><strong>Kinh nghiệm:</strong> <%= experience %></p>
+                    <p><strong>Nơi làm việc:</strong> <%= workplace %></p>
+                    <p><strong>Thiết bị:</strong> <%= primaryDevice %></p>
+                </div>
+            </div>
+        </header>
+
+        <section class="mb-8">
+            <h2 class="section-title">Hồ sơ & Động lực</h2>
+            <p class="text-gray-700 mb-4"><%= profileSummary %></p>
+            <p class="bg-blue-50 p-4 rounded text-blue-900 italic font-medium border-l-4 border-blue-500"><strong>Động lực:</strong> <%= motivations %></p>
+        </section>
+
+        <div class="grid grid-cols-2 gap-8 mb-8">
+            <section>
+                <h2 class="section-title">Mục tiêu (Goals)</h2>
+                <ul class="list-disc pl-5 space-y-2">
+                    <% goals.forEach(goal => { %><li class="text-gray-700"><%= goal %></li><% }) %>
+                </ul>
+            </section>
+            <section>
+                <h2 class="section-title">Nhiệm vụ (Tasks)</h2>
+                <ul class="list-disc pl-5 space-y-2">
+                    <% tasks.forEach(task => { %><li class="text-gray-700"><%= task %></li><% }) %>
+                </ul>
+            </section>
+        </div>
+
+        <div class="grid grid-cols-2 gap-8 mb-8">
+            <section>
+                <h2 class="section-title">Khó khăn (Pain Points)</h2>
+                <ul class="list-disc pl-5 space-y-2 text-red-700">
+                    <% painPoints.forEach(pain => { %><li><%= pain %></li><% }) %>
+                </ul>
+            </section>
+            <section>
+                <h2 class="section-title">Mong muốn (Wishes)</h2>
+                <ul class="list-disc pl-5 space-y-2 text-green-700">
+                    <% wishes.forEach(wish => { %><li><%= wish %></li><% }) %>
+                </ul>
+            </section>
+        </div>
+
+        <section class="mb-8">
+            <h2 class="section-title">Hành vi & Điểm chạm (Behaviors & Touchpoints)</h2>
+            <div class="grid grid-cols-2 gap-4">
+                <ul class="list-disc pl-5 space-y-1">
+                    <% behaviors.forEach(b => { %><li class="text-gray-600"><%= b %></li><% }) %>
+                </ul>
+                <div class="bg-gray-100 p-4 rounded text-gray-700 text-sm">
+                    <strong>Điểm chạm:</strong> <%= touchpoints.join(', ') %>
+                </div>
+            </div>
+        </section>
+
+        <footer class="mt-8 pt-8 border-t border-gray-200">
+            <blockquote class="text-2xl font-serif italic text-gray-900 text-center">
+                "<%= representativeQuote %>"
+            </blockquote>
+        </footer>
+    </div>
+</body>
+</html>

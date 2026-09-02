@@ -1,0 +1,43 @@
+{
+  "name": "Nguyễn Minh Anh",
+  "occupation": "Trưởng nhóm dự án / Điều phối viên",
+  "age": 21,
+  "experience": "Hơn 3 năm kinh nghiệm điều phối nhóm 4-6 người trong các dự án học thuật.",
+  "workplace": "Trường Đại học (Sinh viên năm 4)",
+  "primaryDevice": "Laptop kết hợp Smartphone (Messenger/Zalo)",
+  "photo": "https://i.pravatar.cc/150?u=minhanh",
+  "profileSummary": "Là sinh viên năm cuối dày dạn kinh nghiệm, Minh Anh thường xuyên đảm nhận vai trò trưởng nhóm trong các đồ án môn học. Với áp lực từ 3-4 dự án mỗi kỳ, cô phải cân bằng việc học và điều phối nhóm. Cô có tư duy quản lý tốt nhưng thường xuyên cảm thấy kiệt sức vì các công việc quản lý thủ công, thiếu công cụ hỗ trợ trực quan.",
+  "goals": [
+    "Phân công công việc công bằng, minh bạch dựa trên năng lực thực tế.",
+    "Theo dõi tiến độ tổng thể của dự án mà không cần nhắc nhở từng thành viên.",
+    "Phát hiện sớm các rủi ro quá tải hoặc trễ deadline để điều chỉnh kịp thời."
+  ],
+  "tasks": [
+    "Nhập danh sách nhiệm vụ và kỹ năng yêu cầu vào hệ thống.",
+    "Đánh giá hồ sơ kỹ năng của thành viên.",
+    "Xem xét và tinh chỉnh bản phân công đề xuất bởi thuật toán.",
+    "Theo dõi Gantt chart và xuất timeline tổng quan cho cả nhóm."
+  ],
+  "painPoints": [
+    "Phân công công việc dựa trên cảm tính thay vì dữ liệu năng lực.",
+    "Mất quá nhiều thời gian để nhắc nhở tiến độ và đốc thúc thành viên.",
+    "Khó khăn trong việc phát hiện ai đang quá tải cho đến sát hạn chót."
+  ],
+  "wishes": [
+    "Một bảng điều khiển tập trung thay vì dùng Google Sheets rời rạc.",
+    "Thông báo tự động về tiến độ thay vì phải nhắn tin nhắc nhở.",
+    "Hệ thống đề xuất phân công thông minh giúp tối ưu hóa sở trường thành viên."
+  ],
+  "behaviors": [
+    "Thường xuyên họp online để cập nhật tình hình (định kỳ).",
+    "Sử dụng Messenger/Zalo làm kênh trao đổi chính nhưng dễ bị trôi tin nhắn.",
+    "Hay lo lắng về việc mất công bằng trong nhóm nên thường ôm đồm công việc."
+  ],
+  "touchpoints": [
+    "Nhóm chat (Messenger/Zalo)",
+    "Google Sheets / Excel quản lý",
+    "Email thông báo giảng viên/nhóm"
+  ],
+  "representativeQuote": "Tối nào mình cũng phải nhắn từng đứa hỏi 'đến đâu rồi?' thay vì nhìn thẳng vào bảng tiến độ.",
+  "motivations": "Muốn xây dựng môi trường làm việc nhóm chuyên nghiệp, công bằng và hiệu quả, giảm bớt gánh nặng quản lý thủ công."
+}
