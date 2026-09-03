@@ -22,7 +22,7 @@ style: |
 **Môn CSC12106 — Tương tác Người-Máy | Nhóm 8 — 23HTTT01**
 23127110 · 23127385 · 23127495 — 01/09/2026
 
-> **BASE DECK** — dựng từ phần đã hoàn thành. Các slide [TODO] sẽ hoàn thiện khi đủ scenario/storyboard/evaluation.
+> **BASE DECK — đồng bộ với `report/report.docx` final (cover logo + TOC p.2, persona năm 4, storyboard 6 khung)**
 
 ---
 
@@ -50,15 +50,17 @@ style: |
 
 ---
 
-## 2. Người dùng mục tiêu (Personas) — ✅ Đã xong
+## 2. Người dùng mục tiêu (Personas) — ✅ Đồng bộ năm 4
 
 | Persona | Vai trò | Pain chính | Cần gì |
 |---------|---------|------------|--------|
-| **Nguyễn Minh Anh** 21t CNTT | Trưởng nhóm | Giao theo cảm tính, phát hiện quá tải muộn | Thấy ai rảnh/quá tải, chia công bằng |
-| **Trần Hoàng Dũng** 20t KT | Thành viên | Không rõ việc/deadline, sai chuyên môn | Checklist rõ, cảnh báo quá tải |
+| **Nguyễn Minh Anh** 21t CNTT năm 4 | Trưởng nhóm | Giao cảm tính, phát hiện quá tải muộn | Thấy ai rảnh/quá tải, chia công bằng |
+| **Trần Hoàng Dũng** 20t KT năm 2 | Thành viên | Không rõ việc/deadline, sai chuyên môn | Checklist rõ, cảnh báo quá tải |
 | **Lê Thị Minh Lan** 35t | Giảng viên | Chỉ thấy báo cáo cuối kỳ | Tiến độ thực tế + đóng góp |
 
-Nguồn: `persona/personas.md` + `survey_answers.csv` (n=15). Ảnh: `persona/persona.png`
+Nguồn: `personas.md` + `student_leader_deep.json` + `survey_persona.md` (n=15). Ảnh: `persona.png`
+
+![bg right:45% 85%](../../report/assets/persona.png)
 
 ---
 
@@ -154,18 +156,18 @@ Code: `prototype/src/utils/assignmentAlgorithm.js`
 
 ---
 
-## 10. Tiến độ hiện tại
+## 10. Tiến độ hiện tại — đồng bộ report final
 
 | Hạng mục | Trạng thái | Nguồn |
 |----------|------------|-------|
-| Persona + Survey n=15 | ✅ Xong | `persona/*` |
-| Wireframe 6 màn + Spec | ✅ Xong | `wireframe/*` |
-| Prototype + Thuật toán | ✅ Xong | `prototype/*` |
-| Value Proposition | ⏳ TODO | `value_proposition/` rỗng |
-| Scenario 1/2 | ⏳ TODO | `scenario_*/` rỗng |
-| Storyboard | ⏳ TODO | `storyboard/` rỗng |
-| Evaluation (5 users) | ⏳ TODO | Chưa làm |
-| Supabase + Resend thật | ⏳ 50% | Mới frontend |
+| Persona + Survey n=15 | ✅ Xong (năm 4 đồng bộ) | `persona/*` |
+| Value Proposition | ✅ Xong | `vp_student_leader.png` |
+| Scenario As-Is/To-Be | ✅ Xong | `scenario_asis.png` |
+| Storyboard 6 khung | ✅ Xong | `storyboard.png` (mới thêm) |
+| Wireframe 6 màn + Prototype | ✅ Xong | `wireframe-export.png` |
+| Evaluation n=7 | ✅ Xong | 92.9% · SUS 76.8 · p=0.0056 |
+| Report | ✅ docx 8.6MB + pdf | `report/report.docx` (logo + TOC p.2) |
+| Supabase/Resend | ⏳ 50% | Phase 2 |
 
 ---
 

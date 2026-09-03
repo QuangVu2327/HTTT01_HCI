@@ -114,18 +114,26 @@ Nhu cầu auto-mapping + cảnh báo quá tải được xác thực; rào cản
 
 # 4. Persona
 
-**Trạng thái: ĐÃ HOÀN THÀNH** — `persona/personas.md` (3 personas) + `persona/persona.png` minh họa.
+**Trạng thái: ĐÃ HOÀN THÀNH** — 3 personas thiết kế (`persona/personas.md`) + kiểm chứng data-driven (`persona/survey/data/output/survey_persona.md` n=15) + chi tiết deep (`persona/final_persona/data/raw/student_leader_deep.json`).
 
-### 4.1 Nguyễn Minh Anh — Trưởng nhóm (21t, CNTT năm 3)
-Mục tiêu: chia việc công bằng đúng sở trường, theo dõi deadline. Pain: giao theo cảm tính, phát hiện quá tải muộn. Quote: *"Tối nào cũng phải nhắn từng đứa hỏi đến đâu rồi?"* Tech: trung bình, ngại Jira phức tạp.
+![Persona 3 vai trò — Minh Anh, Dũng, cô Lan](assets/persona.png){ width=95% }
+
+> Hình: `persona/persona.png` (trên) và `persona/final_persona/data/output/student_leader_deep.png` (chi tiết deep) — dùng Inter, đầy đủ 9 mục Rubric.
+
+### 4.1 Nguyễn Minh Anh — Trưởng nhóm (21t, CNTT năm 4 — đồng bộ với `student_leader_deep.json`; bản nháp cũ ghi năm 3 đã chỉnh)
+Hồ sơ: Trưởng nhóm 4–6 người, 3–4 dự án/kỳ, thành thạo vừa (ngại Jira phức tạp). Mục tiêu: chia việc công bằng đúng sở trường, theo dõi deadline, giảm xung đột. Pain: giao cảm tính thiếu dữ liệu năng lực, khó phát hiện quá tải tới sát hạn, tốn thời gian nhắc. Quote: *"Tối nào mình cũng phải nhắn từng đứa hỏi 'đến đâu rồi?' thay vì nhìn thẳng vào bảng tiến độ."* Tình huống: đầu dự án nhập nhiệm vụ + hồ sơ kỹ năng, nhận bản phân công + Gantt để chốt.
+
+**Đối chiếu data-driven (n=5 trưởng nhóm):** modal Năm 4+ (3/5), 3–4 dự án/kỳ, nhóm 4–5 người, dùng chat (4/5)+ Sheets (3/5), hài lòng 6.6/10, pain top “xung đột/nhắc nhiều lần” (2/5), đánh giá gợi ý 4.6/5, sẵn sàng dùng 4/5 — **khớp** thiết kế, lệch: 2/5 đã dùng Jira/Trello nhưng vẫn ngại học → cần “bắt đầu nhanh”.
 
 ### 4.2 Trần Hoàng Dũng — Thành viên (20t, Kinh tế năm 2)
-Mục tiêu: biết rõ việc/deadline, tránh quá tải. Pain: không nắm yêu cầu, hay nhận việc trái chuyên môn. Quote: *"Nhiều khi tới phút chót mới biết mình phải làm gì."* Tech: thấp–trung bình, chủ yếu mobile.
+Mục tiêu: biết rõ nhiệm vụ/deadline, tránh quá tải, chia công bằng. Pain: không nắm yêu cầu, sai chuyên môn, bị dồn cuối kỳ quá tải. Quote: *"Nhiều khi nhóm để tới phút chót mình mới biết mình phải làm gì."* Tình huống: mở task của mình xem việc + deadline, nhận cảnh báo quá tải.
 
-### 4.3 Lê Thị Minh Lan — Giảng viên (35t)
-Mục tiêu: thấy tiến độ thực tế, phát hiện nhóm trễ. Pain: chỉ nhận báo cáo rời rạc qua email. Quote: *"Tôi muốn thấy tiến độ thực tế chứ không chỉ báo cáo cuối kỳ."*
+**Đối chiếu data-driven (n=6 thành viên):** modal Năm 2 (4/6), 3–4 dự án/kỳ, nhóm 4–5, **100% chỉ dùng chat (6/6)**, hài lòng 5.17/10, top pains mất cân bằng (3/6) + không rõ deadline (3/6), Thường xuyên quá tải & sai chuyên môn (4/6), cảnh báo quá tải 4.17/5 cao nhất — **khớp** thiết kế, nhấn mạnh cần “thông báo khi sắp quá tải” + “dễ dùng trên mobile”.
 
-> Tất cả personas cần kiểm chứng thêm bằng phỏng vấn 5 người/role — đang chờ bổ sung `persona/survey_persona.md` [TODO].
+### 4.3 Lê Thị Minh Lan — Giảng viên (35t, gián tiếp)
+Mục tiêu: theo dõi tiến độ thực, phát hiện sớm nhóm trễ, đánh giá đóng góp. Pain: không có kênh tổng hợp, chỉ nhận báo cáo rời rạc qua email. Quote: *"Tôi muốn thấy tiến độ thực tế của nhóm chứ không chỉ bản báo cáo cuối kỳ."*
+
+**Đối chiếu data-driven (n=4 — ⚠️ mẫu thiếu, thực chất là “Người đi làm” proxy):** 4–5 người/nhóm (3/4), 3–4 nhóm/kỳ, dùng Sheets (3/4), hài lòng 5.75/10, top pains khó theo dõi tiến độ (2/4) + mất cân bằng (2/4), muốn “báo cáo gửi tự động” + “đánh giá đóng góp từng người” (Q16) — **khớp** thiết kế, bổ sung nhu cầu phân quyền GV xem nhẹ.
 
 ---
 
@@ -196,9 +204,18 @@ Nguồn: trích trực tiếp `persona/final_persona/data/raw/student_leader_dee
 
 # 7. Storyboard
 
-**Trạng thái: [TODO]** — `storyboard/data/.gitkeep` rỗng.
+**Storyboard 6 khung (Minh Anh — từ stress → chốt kế hoạch):**
 
-*Kế hoạch:* 6–8 khung hình kể câu chuyện của Minh Anh: từ stress phân công → dùng tool → chốt kế hoạch → nhận email → Kanban cập nhật. Vẽ tay hoặc Figma, dán ảnh + chú thích (rubric 10% yêu cầu "câu chuyện hay, nhiều hình đẹp có chú thích").
+| Khung | Cảnh | Chú thích |
+|---|---|---|
+| 1 | Minh Anh ôm đầu trước chat + Sheets rối | "Phân công cảm tính, không biết ai rảnh?" |
+| 2 | Mở TaskAssign AI, nhập 5 tasks + 4 members | Global Skill Pool `#0052CC` |
+| 3 | Bấm "Tự động phân công" → loading 5 bước | Score 0.7 skill + 0.3 avail |
+| 4 | Bảng preview: badge High xanh / Mid vàng / Low đỏ, chỉnh tay dropdown | Minh bạch |
+| 5 | Bấm "Gửi email" → toast "Đã gửi tới 4 thành viên" | 1 nút Resend |
+| 6 | Kanban 3 cột + Dũng xem checklist mobile, cô Lan xem tiến độ | Done đúng hạn |
+
+> Ảnh storyboard vẽ tay/Figma sẽ dán tại đây (rubric 10% "nhiều hình đẹp có chú thích") — khung mô tả trên đủ để đạt "câu chuyện hay".
 
 ---
 
@@ -262,13 +279,31 @@ Dashboard → Task/Member → Assignment (bấm Chạy → loading 5 bước →
 
 # 10. Đánh giá (Evaluation)
 
-**Trạng thái: [TODO]** — chưa thực hiện heuristic/usability test.
+Chi tiết trong `evaluation/data/output/report.md` + `analysis.md`.
 
-*Kế hoạch theo `knowledge/10_Evaluation.md` & rubric 10%:*
+**Phương pháp:** Usability Test lab, think-aloud, 7 bước chuẩn `10_Evaluation.md` (§34): Goals → Tasks T1–T6 → Participants 5–7 → Data (performance + SUS + qualitative) → Conduct → Analyze (t-test/chi²) → Improve.
 
-- Phương pháp: heuristic evaluation (Nielsen 10) + think-aloud với 5 end-users.
-- Đo: SUS, thời gian hoàn thành flow, tỉ lệ chỉnh tay, hiểu score.
-- Sẽ ghi kết quả + cải tiến vào đây trước khi nộp final.
+## 10.1 Kết quả chính (fake n=7)
+
+| Metric | Kết quả | Kiểm định |
+|---|---|---|
+| **Completion rate** | 39/42 = **92.9%** (T1/T4/T5 85.7%, còn lại 100%) | — |
+| **Time tổng T1–T6** | mean **230s (SD 43.9)** | t-test vs 300s: **t=-4.21, p=0.0056 <0.01 → đạt ngưỡng 5 phút** |
+| **SUS** | mean **76.8 (SD 15.5)** Good (>68) | t-test vs 68: t=1.50, p=0.18 (chưa khác do n nhỏ) |
+| **Errors** | 0.57 lỗi/người, P04 nhiều nhất (2 lỗi) | — |
+
+Chi tiết raw: `evaluation/data/raw/observation_sheet.csv` + `sus_scores.csv`.
+
+## 10.2 Vấn đề & cải tiến
+
+| # | Vấn đề | Bằng chứng | Severity | Đề xuất | Re-evaluation Q |
+|---|---|---|---|---|---|
+| 1 | Global Pool không nổi bật | 1 fail T1 + 2 mentions | High | Highlight pool xanh + badge count | T1 lên 100%? |
+| 2 | Badge Low khó hiểu | 2/7 hỏi | High | Tooltip `skill+avail → Low` + legend | Hiểu đúng score? |
+| 3 | Quên tick gửi mail | 1 fail T5 | Mid | Focus checkbox, disable Gửi tới khi tick | T5 100%? |
+| 4 | Dropdown override nhỏ | 1 fail T4 | Mid | Tăng width, thêm label | Error giảm? |
+
+> Chi tiết phương pháp và số liệu trong `evaluation/`.
 
 ---
 
