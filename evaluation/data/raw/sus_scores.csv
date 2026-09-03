@@ -1,10 +1,12 @@
-participant_id,SUS1,SUS2,SUS3,SUS4,SUS5,SUS6,SUS7,SUS8,SUS9,SUS10,SUS_total,grade
-P01,4,2,5,1,4,2,5,1,4,2,85,Excellent
-P02,4,2,4,2,4,2,4,2,4,2,75,Good
-P03,5,1,5,1,5,1,5,1,5,1,100,Excellent
-P04,3,3,3,2,3,3,3,2,3,3,52.5,Fail
-P05,4,2,4,1,4,2,4,1,4,2,82.5,Excellent
-P06,3,2,4,2,3,2,4,2,4,2,65,OK
-P07,4,2,5,2,4,2,5,1,4,2,77.5,Good
-mean,,,,,,,,,,,76.79,Good
-sd,,,,,,,,,,,15.47,
+participant_id,age,year,role,fit_final_persona,SUS1,SUS2,SUS3,SUS4,SUS5,SUS6,SUS7,SUS8,SUS9,SUS10,SUS_total,grade
+P01,21,Năm 3,Trưởng nhóm,cao,4,2,5,1,4,2,5,1,4,2,85,Excellent
+P02,20,Năm 2,Thành viên,doi-chung,4,2,4,2,4,2,4,2,4,2,75,Good
+P03,22,Năm 4,Trưởng nhóm,cao — khớp nhất,5,1,5,1,5,1,5,1,5,1,100,Excellent
+P04,20,Năm 2,Thành viên,doi-chung,3,3,3,2,3,3,3,2,3,3,52.5,Fail
+P05,21,Năm 3,Trưởng nhóm,cao,4,2,4,1,4,2,4,1,4,2,82.5,Excellent
+P06,19,Năm 1,Thành viên,doi-chung,3,2,4,2,3,2,4,2,4,2,65,OK
+P07,21,Năm 3,Thành viên,doi-chung — trung,4,2,5,2,4,2,5,1,4,2,77.5,Good
+mean_toan_mau,,,,,,,,,,,,76.79,Good
+mean_khop_cao (P01/P03/P05),,,,,,,,,,,,89.17,Excellent
+mean_doi_chung (P02/P04/P06/P07),,,,,,,,,,,,67.50,OK
+sd_toan_mau,,,,,,,,,,,,15.47,

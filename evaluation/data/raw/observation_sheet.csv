@@ -1,8 +1,8 @@
-participant_id,year,role,tool_familiar,T1_time_s,T1_success,T2_time_s,T2_success,T3_time_s,T3_success,T4_time_s,T4_success,T5_time_s,T5_success,T6_time_s,T6_success,total_time_s,errors,help_requests,SUS1,SUS2,SUS3,SUS4,SUS5,SUS6,SUS7,SUS8,SUS9,SUS10,SUS_total,interview_easy,interview_score_understand,interview_improve
-P01,Năm 3,Trưởng nhóm,Sheets/Docs,42,1,78,1,28,1,22,1,18,1,14,1,202,0,0,4,2,5,1,4,2,5,1,4,2,85,Dễ nhất T3 một nút, Hiểu High/Mid/Low rõ, Thêm tooltip cho Low
-P02,Năm 2,Thành viên,Chat,58,1,88,1,35,1,38,1,24,1,19,1,262,1,0,4,2,4,2,4,2,4,2,4,2,75,T3 dễ, Hiểu 70% cần ví dụ, Nút Gửi nên nổi hơn
-P03,Năm 4,Trưởng nhóm,Jira,30,1,65,1,22,1,18,1,15,1,11,1,161,0,0,5,1,5,1,5,1,5,1,5,1,100,Rất nhanh quen Jira, Hiểu rõ 0.7/0.3, Không cần sửa
-P04,Năm 2,Thành viên,Chat,85,0,95,1,38,1,32,1,28,0,22,1,300,2,1,3,3,3,2,3,3,3,2,3,3,52.5,T1 khó tìm pool, Low hơi khó hiểu, Highlight pool xanh
-P05,Năm 3,Trưởng nhóm,Trello,48,1,82,1,26,1,20,1,17,1,13,1,206,0,0,4,2,4,1,4,2,4,1,4,2,82.5,T2 rõ ràng, Hiểu badge màu, Thêm progress bar
-P06,Năm 1,Thành viên,Chat,62,1,90,1,33,1,27,0,21,1,16,1,249,1,1,3,2,4,2,3,2,4,2,4,2,65,T4 dropdown nhỏ, Hiểu High/Mid chưa Low, Tăng size dropdown
-P07,Năm 3,Thành viên,Sheets,55,1,85,1,30,1,25,1,20,1,15,1,230,0,0,4,2,5,2,4,2,5,1,4,2,77.5,Flow mượt, Hiểu sau khi đọc legend, Thêm legend cố định
+participant_id,age,year,role,experience_years,group_size,tool_familiar,device,fit_final_persona,T1_time_s,T1_success,T2_time_s,T2_success,T3_time_s,T3_success,T4_time_s,T4_success,T5_time_s,T5_success,T6_time_s,T6_success,total_time_s,errors,help_requests,SUS1,SUS2,SUS3,SUS4,SUS5,SUS6,SUS7,SUS8,SUS9,SUS10,SUS_total,interview_easy,interview_score_understand,interview_improve
+P01,21,Năm 3,Trưởng nhóm,3,4,Sheets/Docs,Laptop+Phone,cao,42,1,78,1,28,1,22,1,18,1,14,1,202,0,0,4,2,5,1,4,2,5,1,4,2,85,Dễ nhất T3 một nút, Hiểu High/Mid/Low rõ, Thêm tooltip cho Low
+P02,20,Năm 2,Thành viên,1,3,Chat,Phone,doi-chung,58,1,88,1,35,1,38,1,24,1,19,1,262,1,0,4,2,4,2,4,2,4,2,4,2,75,T3 dễ, Hiểu 70% cần ví dụ, Nút Gửi nên nổi hơn
+P03,22,Năm 4,Trưởng nhóm,3.5,6,Jira/Sheets,Laptop+Phone,cao — khớp nhất,30,1,65,1,22,1,18,1,15,1,11,1,161,0,0,5,1,5,1,5,1,5,1,5,1,100,Rất nhanh quen Jira, Hiểu rõ 0.7/0.3, Không cần sửa
+P04,20,Năm 2,Thành viên,0.5,3,Chat,Phone,doi-chung,85,0,95,1,38,1,32,1,28,0,22,1,300,2,1,3,3,3,2,3,3,3,2,3,3,52.5,T1 khó tìm pool, Low hơi khó hiểu, Highlight pool xanh
+P05,21,Năm 3,Trưởng nhóm,2,5,Trello/Sheets,Laptop+Phone,cao,48,1,82,1,26,1,20,1,17,1,13,1,206,0,0,4,2,4,1,4,2,4,1,4,2,82.5,T2 rõ ràng, Hiểu badge màu, Thêm progress bar
+P06,19,Năm 1,Thành viên,0.5,3,Chat,Phone,doi-chung,62,1,90,1,33,1,27,0,21,1,16,1,249,1,1,3,2,4,2,3,2,4,2,4,2,65,T4 dropdown nhỏ, Hiểu High/Mid chưa Low, Tăng size dropdown
+P07,21,Năm 3,Thành viên,1,4,Sheets, Laptop,doi-chung — trung,55,1,85,1,30,1,25,1,20,1,15,1,230,0,0,4,2,5,2,4,2,5,1,4,2,77.5,Flow mượt, Hiểu sau khi đọc legend, Thêm legend cố định

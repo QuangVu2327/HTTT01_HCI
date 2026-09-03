@@ -82,4 +82,6 @@ Prototype **đạt 100% effectiveness trên nhóm khớp final persona** (P01/P0
 
 > **Ảnh final persona đính kèm báo cáo:** `persona/final_persona/data/output/student_leader_deep.png` (không dùng `personas.md` draft).
 
+![Final Persona — Nguyễn Minh Anh](../../persona/final_persona/data/output/student_leader_deep.png)
+
 ---
