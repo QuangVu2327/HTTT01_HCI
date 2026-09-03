@@ -4,8 +4,8 @@
 
 ## 1. Mục tiêu
 
-- Kiểm chứng prototype `prototype/` + wireframe `wireframe/index.html` có giải quyết được pains của 3 personas (Minh Anh / Dũng / cô Lan) không.
-- Đo **hiệu quả, hiệu suất, lỗi, khả năng học, hài lòng** (5 tiêu chí usability — slide 27).
+- Kiểm chứng prototype `prototype/` + wireframe `wireframe/index.html` có giải quyết được pains của **final persona** `persona/final_persona/data/raw/student_leader_deep.json` (Nguyễn Minh Anh, 21t, Trưởng nhóm SV năm 4 — primary persona, đã render `data/output/student_leader_deep.html|.png`) không.
+- Đo **hiệu quả, hiệu suất, lỗi, khả năng học, hài lòng** (5 tiêu chí usability — slide 27) trên đúng đối tượng final persona.
 - Thu thập bằng chứng định lượng (task success, time, SUS) để điền vào báo cáo §10 và cải tiến thiết kế trước khi tích Supabase.
 
 ## 2. Đầu vào
@@ -14,7 +14,7 @@
 |---|---|
 | `prototype/src/App.jsx` + `assignmentAlgorithm.js` | Sản phẩm cần đánh giá (5 tasks + 4 members, flow 4 tabs) |
 | `wireframe/index.html` + `screens/spec.md` | Phương án thay thế để so sánh nếu cần |
-| `persona/personas.md` + `survey_answers.csv` (n=15) | Định nghĩa đúng target user |
+| `persona/final_persona/data/raw/student_leader_deep.json` + `data/output/student_leader_deep.html|.png` (final persona, nguồn chuẩn) + `persona/survey/data/raw/survey_answers.csv` (n=15, đối chiếu) | Định nghĩa đúng target user — **bắt buộc dùng final persona, không dùng `persona/personas.md` draft** |
 | `knowledge/10_Evaluation.md` §3 (Usability Test) | Quy trình 7 bước chuẩn |
 
 ## 3. Phương pháp đã chọn
@@ -52,10 +52,11 @@ Không dùng đồng thời cả 3 để tránh quá tải; tập trung làm **1
 
 Mỗi task có **hướng dẫn verbatim** cho facilitator, không gợi ý cách làm.
 
-### B3 — Select participants (slide 33)
+### B3 — Select participants (slide 33) — khớp **final persona** `student_leader_deep.json`
 - **Số lượng:** 5–7 người (tối thiểu 5 theo HCI, 5–12 là đủ phát hiện 80% lỗi).
-- **Tiêu chí:** đã/đang làm nhóm 3–5 người; ít nhất 3 trưởng nhóm + 2 thành viên (khớp persona); chưa từng dùng prototype này.
-- **Tuyển:** từ lớp 23HTTT, nhóm chat survey cũ. Ghi demographics (năm học, role, công cụ quen dùng).
+- **Tiêu chí (map từ final persona):** 20–22t, SV năm 3–4, đã/đang làm trưởng/điều phối nhóm 3–6 người, dùng Laptop + Messenger/Zalo + Google Sheets, pains: phân công cảm tính / nhắc tiến độ thủ công / khó phát hiện quá tải; chưa từng dùng prototype này. Ưu tiên ≥4 người khớp Minh Anh (trưởng nhóm); 1–2 thành viên đối chứng nếu cần nhưng phân tích riêng.
+- **Tuyển:** từ lớp 23HTTT, nhóm chat survey cũ (lọc theo A1–A3 trong `google_form.gs`). Ghi demographics (năm học, role, công cụ quen dùng, kinh nghiệm điều phối) để đối chiếu với final persona.
+- **Loại trừ:** không tuyển người trùng `personas.md` draft generic; mọi báo cáo phải trích dẫn `final_persona/data/raw/student_leader_deep.json` làm nguồn chuẩn.
 
 ### B4 — Define data collection (How)
 | Loại | Metric | Cách thu |
@@ -77,7 +78,8 @@ Vai trò WoZ nếu dùng: Facilitator (dẫn), Computer (đổi prototype nếu 
 - Định tính: gom utterances thành 3–5 vấn đề chính (vd: "không hiểu badge Low").
 
 ### B7 — Identify problems & improve
-- Mỗi vấn đề ghi: mô tả → bằng chứng (ví dụ: 3/5 người nhầm badge) → mức nghiêm trọng (High/Mid/Low) → đề xuất sửa → re-evaluation question (vd: "Sau khi thêm tooltip, người dùng có hiểu score không?").
+- Mỗi vấn đề ghi: mô tả → bằng chứng (ví dụ: 3/5 người khớp final persona nhầm badge) → mức nghiêm trọng (High/Mid/Low) → đề xuất sửa → re-evaluation question (vd: "Sau khi thêm tooltip, người dùng khớp final persona có hiểu score không?").
+- Mỗi issue phải map lại pains/wishes của final persona (vd: W1 "bảng tập trung thay Sheets rời rạc" → issue pool không nổi).
 
 ## 6. Timeline gợi ý
 

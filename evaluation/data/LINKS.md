@@ -22,15 +22,16 @@
 
 ## Tài liệu Evaluation trong repo
 
-- Kế hoạch: `evaluation/plan.md`
-- Hướng dẫn: `evaluation/skill.md`
+- Kế hoạch: `evaluation/plan.md` (nguồn chuẩn: `persona/final_persona/data/raw/student_leader_deep.json`)
+- Hướng dẫn: `evaluation/skill.md` (bắt buộc dùng final persona, không dùng `personas.md` draft)
+- Final persona: `persona/final_persona/data/raw/student_leader_deep.json` + `data/output/student_leader_deep.html|.png`
 - Facilitator script: `evaluation/data/raw/facilitator_script.md`
 - Self-guided packet: `evaluation/data/raw/evaluation_packet_self_guided.md`
 - SUS form: `evaluation/data/raw/sus_form.md`
 - Observation sheet: `evaluation/data/raw/observation_sheet.csv`
-- Analysis (math): `evaluation/data/output/analysis.md`
-- Báo cáo nháp: `evaluation/data/output/report.md`
-- Script tạo Form: `evaluation/google_form.gs`
+- Analysis (math): `evaluation/data/output/analysis.md` (tách nhóm khớp cao vs đối chứng)
+- Báo cáo nháp: `evaluation/data/output/report.md` (map với final persona)
+- Script tạo Form: `evaluation/google_form.gs` (+ `data/raw/google_form_evaluation.gs` backup)
 
 ## Báo cáo & Slide liên quan
 

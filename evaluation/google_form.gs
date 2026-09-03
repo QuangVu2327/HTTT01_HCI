@@ -23,6 +23,7 @@ function createEvaluationForm() {
   form.setDescription(
     'Cảm ơn bạn tham gia đánh giá công cụ TaskAssign AI (tự động gợi ý phân công việc nhóm).\n' +
     'Mục đích: kiểm tra CÔNG CỤ, không phải kiểm tra bạn. Mọi khó khăn đều là lỗi thiết kế.\n' +
+    'Đối tượng chuẩn: FINAL PERSONA Nguyễn Minh Anh (21t, SV năm 4, Trưởng nhóm 3–6 người, Laptop+Zalo+Sheets) — xem persona/final_persona/data/output/student_leader_deep.png. Kết quả sẽ đối chiếu với final persona này.\n' +
     'Thời gian: ~20 phút (6 nhiệm vụ + 10 câu SUS). Dữ liệu ẩn danh, chỉ dùng cho môn CSC12106.\n' +
     'Link prototype: ' + PROTOTYPE_LINK + '\n' +
     'Nếu không mở được prototype, dùng backup: wireframe/index.html (mở trực tiếp).'
@@ -36,17 +37,17 @@ function createEvaluationForm() {
   form.addPageBreakItem().setTitle('Phần A — Thông tin người tham gia (ẩn danh)');
 
   form.addMultipleChoiceItem()
-    .setTitle('A1. Bạn đang là?')
+    .setTitle('A1. Bạn đang là? (so khớp final persona: SV năm 3–4 là chuẩn)')
     .setChoiceValues(['Sinh viên Năm 1', 'Sinh viên Năm 2', 'Sinh viên Năm 3', 'Sinh viên Năm 4+', 'Người đi làm', 'Khác'])
     .setRequired(true);
 
   form.addMultipleChoiceItem()
-    .setTitle('A2. Vai trò khi làm việc nhóm gần nhất?')
-    .setChoiceValues(['Trưởng nhóm (hay giao việc)', 'Thành viên (được giao việc)', 'Giảng viên / Mentor', 'Chưa từng làm nhóm'])
+    .setTitle('A2. Vai trò khi làm việc nhóm gần nhất? (final persona = Trưởng nhóm/Điều phối 3–6 người)')
+    .setChoiceValues(['Trưởng nhóm (hay giao việc) — khớp final persona', 'Thành viên (được giao việc)', 'Giảng viên / Mentor', 'Chưa từng làm nhóm'])
     .setRequired(true);
 
   form.addCheckboxItem()
-    .setTitle('A3. Công cụ bạn hay dùng để quản lý việc nhóm? (chọn nhiều)')
+    .setTitle('A3. Công cụ bạn hay dùng để quản lý việc nhóm? (chọn nhiều) — final persona dùng Messenger/Zalo + Sheets')
     .setChoiceValues(['Messenger/Zalo nhóm chat', 'Google Sheets/Docs', 'Trello/Notion/Asana/Jira', 'Email', 'Không dùng gì'])
     .setRequired(true);
 
@@ -54,6 +55,14 @@ function createEvaluationForm() {
     .setTitle('A4. Bạn đã từng dùng TaskAssign AI trước đây chưa?')
     .setChoiceValues(['Chưa từng', 'Đã xem qua 1 lần', 'Đã dùng thử'])
     .setRequired(true);
+
+  form.addParagraphTextItem()
+    .setTitle('A5. Kinh nghiệm điều phối nhóm (số người / số dự án) — để đối chiếu với final persona (>3 năm, nhóm 4–6 người, 3–4 dự án/kỳ)')
+    .setRequired(false);
+
+  form.addParagraphTextItem()
+    .setTitle('A6. Thiết bị chính khi làm nhóm? (final persona: Laptop + Smartphone)')
+    .setRequired(false);
 
   // ===== Phần B — Thực hiện 6 nhiệm vụ =====
   form.addPageBreakItem()
