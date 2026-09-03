@@ -1,0 +1,75 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "HCI Project Report Schema",
+  "type": "object",
+  "properties": {
+    "title": { "type": "string" },
+    "subtitle": { "type": "string" },
+    "group": { "type": "string" },
+    "authors": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": { "type": "string" },
+          "studentId": { "type": "string" }
+        },
+        "required": ["name", "studentId"]
+      }
+    },
+    "chapters": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "chapterNumber": { "type": "integer" },
+          "title": { "type": "string" },
+          "sections": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "sectionNumber": { "type": "string" },
+                "title": { "type": "string" },
+                "paragraphs": {
+                  "type": "array",
+                  "items": { "type": "string" }
+                },
+                "images": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "path": { "type": "string" },
+                      "caption": { "type": "string" }
+                    },
+                    "required": ["path", "caption"]
+                  }
+                },
+                "table": {
+                  "type": "object",
+                  "properties": {
+                    "headers": {
+                      "type": "array",
+                      "items": { "type": "string" }
+                    },
+                    "rows": {
+                      "type": "array",
+                      "items": {
+                        "type": "array",
+                        "items": { "type": "string" }
+                      }
+                    }
+                  }
+                }
+              },
+              "required": ["sectionNumber", "title", "paragraphs"]
+            }
+          }
+        },
+        "required": ["chapterNumber", "title", "sections"]
+      }
+    }
+  },
+  "required": ["title", "group", "authors", "chapters"]
+}

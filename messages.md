@@ -15,3 +15,5 @@
   11. Cải tiến tool `storyboard_png.js` sử dụng giao thức `file://` để tải chính xác các ảnh từ thư mục `assets/` vào `storyboard.png`.
   12. Khởi tạo tệp `changelog.md` và `messages.md` trong thư mục `code/` để theo dõi kiến trúc backend, database schema và Edge Functions theo đúng quy chuẩn dự án.
   13. Cập nhật Changelog/Messages theo quy định dự án.
+  14. Chuẩn hóa module `report/` theo `templates/folder.md`, tích hợp tài liệu tham khảo và kiến thức vào `report.json` qua `report_schema.json`, hoàn thiện `changelog.md` & `messages.md`, chuẩn bị sẵn tool `word_renderer` và dừng lại chờ lệnh xuất file Word.
+  15. Thực thi thành công lệnh xuất file Word từ `report.json` bằng tool `word_json.js`, tạo ra tệp hoàn chỉnh `report/data/output/report.docx` kèm đầy đủ hình ảnh và bảng biểu chuẩn HCI.

@@ -2,7 +2,13 @@
 
 > Mỗi thay đổi liên quan đến cấu trúc dự án, quy định chung (`AGENTS.md`) và điều phối tổng thể đều được ghi lại tại đây.
 
-## [2026-09-02] - Code Module Logs Initialized
+## [2026-09-03] - Report Module Exported Successfully (`report.docx`)
+- Rebuilt `report/` module structure to comply with `templates/folder.md` (`data/assets`, `data/output`, `data/raw`).
+- Updated `report/plan.md` and `report/skill.md` to explicitly require reading references in `assets/` and all files in `knowledge/`, extracting structure and domain knowledge.
+- Created `templates/report_schema.json` and compiled comprehensive `report.json` covering 9 chapters of the HCI project.
+- Established `.opencode/tools/word_renderer/word_json.js` for automated Word document generation.
+- Executed word renderer tool, successfully generating `report/data/output/report.docx` complete with embedded images and structured tables.
+- Initialized and updated `changelog.md` and `messages.md` in `report/`.
 - Created `changelog.md` and `messages.md` in the `code/` module to track backend architecture, database schema, and Edge Functions development according to project standards.
 
 ## [2026-09-02] - Storyboard PNG Tool Fixed & Regenerated

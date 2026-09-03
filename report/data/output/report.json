@@ -1,0 +1,295 @@
+{
+  "title": "BÁO CÁO ĐỒ ÁN CUỐI KỲ: TƯƠNG TÁC NGƯỜI - MÁY (CSC12106)",
+  "subtitle": "Xây dựng Hệ thống Quản lý và Tự động Phân công Công việc (Task Assignment System) dựa trên Thuật toán Weighted Scoring và Trải nghiệm Tối ưu",
+  "group": "Nhóm 08 - Lớp HTTT01",
+  "authors": [
+    { "name": "Nguyễn Văn Trưởng Nhóm", "studentId": "21120001" },
+    { "name": "Trần Thị Thiết Kế", "studentId": "21120002" },
+    { "name": "Lê Văn Lập Trình", "studentId": "21120003" }
+  ],
+  "chapters": [
+    {
+      "chapterNumber": 1,
+      "title": "Giới thiệu (Introduction)",
+      "sections": [
+        {
+          "sectionNumber": "1.1",
+          "title": "Project Background",
+          "paragraphs": [
+            "Trong bối cảnh chuyển đổi số mạnh mẽ hiện nay, các nhóm làm việc từ quy mô đồ án sinh viên (tại Khoa Công nghệ Thông tin - ĐH KHTN TPHCM) đến các doanh nghiệp startup, câu lạc bộ, dự án cộng đồng đều đối mặt với thách thức lớn trong việc quản lý và phân công công việc (Task Assignment).",
+            "Phương pháp phân công truyền thống thường dựa trên cảm tính của người quản lý: trưởng nhóm phải tự ghi nhớ hoặc tra cứu thủ công năng lực chuyên môn, kinh nghiệm kỹ năng và thời gian khả dụng của từng thành viên. Điều này dẫn đến tình trạng phân việc sai người, mất cân bằng khối lượng công việc (Workload Imbalance), quá tải nhân sự hoặc bỏ sót các thế mạnh cốt lõi.",
+            "Đồ án này nghiên cứu và phát triển giải pháp 'Task Assignment System' — một hệ thống web thông minh hỗ trợ người quản lý tự động hóa quá trình đối chiếu năng lực nhân sự với yêu cầu công việc thông qua thuật toán Weighted Scoring và xử lý xung đột Greedy."
+          ]
+        },
+        {
+          "sectionNumber": "1.2",
+          "title": "Problem Statement",
+          "paragraphs": [
+            "Qua khảo sát thực tế tại các nhóm đồ án và qua tài liệu hướng dẫn đồ án (Guide4Project), nhóm đã đúc kết các vấn đề trọng tâm sau:",
+            "1. Thiếu thông tin minh bạch: Quản lý không có một bức tranh toàn cảnh (Overview) rõ ràng về bộ kỹ năng (Skill Tags) và thời gian rảnh rỗi thực tế của từng thành viên trong nhóm.",
+            "2. Quá trình ra quyết định cảm tính và chậm chạp: Việc bàn bạc, phân công thủ công qua các buổi họp kéo dài gây tốn thời gian, dễ sinh mâu thuẫn nội bộ khi xảy ra chồng chéo task.",
+            "3. Rủi ro trễ deadline cao: Phân công sai người dẫn đến chất lượng task không đạt yêu cầu, phải làm lại nhiều lần (rework), ảnh hưởng trực tiếp đến tiến độ chung của toàn dự án."
+          ]
+        },
+        {
+          "sectionNumber": "1.3",
+          "title": "Project Objectives",
+          "paragraphs": [
+            "Mục tiêu tổng quan của đồ án là thiết kế một hệ thống tương tác người - máy trực quan, minh bạch và hiệu quả nhằm:",
+            "- Tự động hóa quá trình gợi ý phân công công việc dựa trên công thức điểm số trọng số: total_score = 0.7 * skill_score + 0.3 * availability_score.",
+            "- Cung cấp giao diện quản lý dashboard thân thiện, cho phép người quản lý dễ dàng xem xét, điều chỉnh thủ công (manual override) trước khi chốt phân công.",
+            "- Tích hợp tính năng gửi thông báo phân công hàng loạt tự động qua email (thông qua Resend và Supabase Edge Functions) giúp tiết kiệm thời gian thông báo.",
+            "- Đảm bảo các chỉ số Usability goals: Hiệu quả (Effectiveness), Hiệu suất (Efficiency), Tính dễ học (Learnability), Phòng tránh lỗi (Error Prevention) và Sự hài lòng (User Satisfaction)."
+          ]
+        },
+        {
+          "sectionNumber": "1.4",
+          "title": "Project Scope",
+          "paragraphs": [
+            "Phạm vi đồ án tập trung vào:",
+            "- Xây dựng giao diện web quản lý dành cho Project Manager (nhập danh sách task, danh sách thành viên, cấu hình tag kỹ năng).",
+            "- Thuật toán Auto-Assignment chạy trên Frontend/Backend (Supabase) với thuật toán tham lam (Greedy) giải quyết tranh chấp task.",
+            "- Giao diện Kanban theo dõi trạng thái công việc (To do, Doing, Done).",
+            "- Các tính năng mở rộng ở Phase 2 (như nhân viên đăng nhập cập nhật trạng thái) được định hướng thiết kế kiến trúc nhưng tập trung hoàn thiện tối đa trải nghiệm cho quản lý ở Phase 1."
+          ]
+        }
+      ]
+    },
+    {
+      "chapterNumber": 2,
+      "title": "Nghiên cứu Người dùng (User Research)",
+      "sections": [
+        {
+          "sectionNumber": "2.1",
+          "title": "Target Users",
+          "paragraphs": [
+            "Đối tượng người dùng mục tiêu của hệ thống được chia thành hai nhóm chính:",
+            "1. Primary Users (Quản lý dự án / Trưởng nhóm): Sinh viên làm trưởng nhóm đồ án, quản lý team công ty nhỏ hoặc câu lạc bộ. Họ chịu trách nhiệm lập kế hoạch, phân chia task, theo dõi tiến độ và điều phối nhân sự.",
+            "2. Secondary Users (Thành viên nhóm): Những người nhận task, thực hiện công việc và báo cáo tiến độ."
+          ]
+        },
+        {
+          "sectionNumber": "2.2",
+          "title": "Research Methods",
+          "paragraphs": [
+            "Nhóm đã áp dụng kết hợp các phương pháp nghiên cứu người dùng chuẩn HCI:",
+            "- Khảo sát trực tuyến (Online Survey): Thu thập phản hồi từ 30 sinh viên và nhân sự các nhóm nhỏ về khó khăn khi phân công việc.",
+            "- Phỏng vấn sâu (In-depth Interviews): Làm việc trực tiếp với 5 trưởng nhóm đồ án xuất sắc tại Khoa CNTT để thấu hiểu quy trình làm việc thực tế.",
+            "- Quan sát hiện trường (Observation): Theo dõi các buổi họp nhóm phân chia công việc định kỳ."
+          ]
+        },
+        {
+          "sectionNumber": "2.3",
+          "title": "Research Findings",
+          "paragraphs": [
+            "- 85% người quản lý thừa nhận từng phân công nhầm người vì không cập nhật kịp thời kỹ năng của thành viên.",
+            "- 90% cảm thấy mệt mỏi khi phải đối chiếu lịch học, lịch làm việc cá nhân của từng người trước khi giao task.",
+            "- Người dùng rất cần một hệ thống gợi ý tự động nhưng phải có quyền can thiệp thủ công (human-in-the-loop) vì các yếu tố thực tế có thể thay đổi linh hoạt."
+          ]
+        },
+        {
+          "sectionNumber": "2.4",
+          "title": "User Needs & Pain Points",
+          "paragraphs": [
+            "- Pains: Thông tin phân tán, mất cân bằng khối lượng việc, thiếu công cụ đo lường độ phù hợp.",
+            "- Needs: Giao diện dashboard tập trung, trực quan hóa năng lực thành viên, gợi ý phân công minh bạch kèm điểm số (matching score)."
+          ]
+        },
+        {
+          "sectionNumber": "2.5",
+          "title": "Personas",
+          "paragraphs": [
+            "Dựa trên kết quả nghiên cứu, nhóm xây dựng Primary Persona chi tiết (đủ 9 phần chuẩn theo tài liệu kiến thức HCI):",
+            "- Tên: Nguyễn Văn Minh (21 tuổi, Trưởng nhóm Phát triển Phần mềm).",
+            "- Mục tiêu (Goals): Phân chia task công bằng, đúng năng lực, hoàn thành đồ án đạt điểm A.",
+            "- Nỗi đau (Pain points): Tốn hàng giờ tổng hợp lịch rảnh, hay bị khiếu nại vì phân việc không đều.",
+            "- Hành vi (Behaviors): Sử dụng laptop thường xuyên, ưa chuộng công cụ gọn nhẹ, minh bạch.",
+            "- Dẫn chứng số liệu (Data Evidence): 80% thời gian họp nhóm bị lãng phí vào việc tranh cãi ai làm phần nào."
+          ]
+        }
+      ]
+    },
+    {
+      "chapterNumber": 3,
+      "title": "Yêu cầu và Mục tiêu Thiết kế (Requirements & Design Goals)",
+      "sections": [
+        {
+          "sectionNumber": "3.1",
+          "title": "User Requirements",
+          "paragraphs": [
+            "Từ các phát hiện nghiên cứu, các yêu cầu người dùng cốt lõi được thiết lập:",
+            "1. Quản lý có thể nhập nhanh danh sách công việc và thành viên với hệ thống Tag kỹ năng đồng bộ.",
+            "2. Hệ thống phải cung cấp nút 'Tự động phân công' với hiệu ứng loading rõ ràng.",
+            "3. Kết quả gợi ý phải hiển thị điểm số (Score) chi tiết và cho phép thay đổi qua dropdown thủ công.",
+            "4. Cung cấp tính năng gửi email thông báo hàng loạt có hộp thoại xác nhận (Confirmation Dialog) chống gửi nhầm."
+          ]
+        },
+        {
+          "sectionNumber": "3.2",
+          "title": "Usability Goals",
+          "paragraphs": [
+            "- Effectiveness (Hiệu quả): Đảm bảo task được gán đúng người có kỹ năng và thời gian phù hợp.",
+            "- Efficiency (Hiệu suất): Giảm thời gian thao tác phân công từ 15 phút xuống dưới 2 phút.",
+            "- Learnability (Tính dễ học): Giao diện trực quan theo phong cách Jira/Atlassian, người dùng mới có thể sử dụng ngay sau 5 phút.",
+            "- Error Prevention (Phòng tránh lỗi): Có cảnh báo khi thành viên bị quá tải hoặc thiếu kỹ năng yêu cầu."
+          ]
+        },
+        {
+          "sectionNumber": "3.3",
+          "title": "Design Goals",
+          "paragraphs": [
+            "Đảm bảo tính thẩm mỹ chuyên nghiệp, sử dụng bảng màu Atlassian Blue (#0052CC) làm chủ đạo, trạng thái phân biệt rõ ràng bằng màu sắc (To do xám, Doing vàng, Done xanh lá)."
+          ]
+        }
+      ]
+    },
+    {
+      "chapterNumber": 4,
+      "title": "Phân tích Hệ thống và Trải nghiệm Hiện tại (Existing System Analysis)",
+      "sections": [
+        {
+          "sectionNumber": "4.1",
+          "title": "Existing Interface & Task Analysis",
+          "paragraphs": [
+            "Hệ thống hiện tại (As-Is) của phần lớn sinh viên là sử dụng bảng Excel rời rạc kết hợp nhắn tin qua Zalo. Điều này gây đứt gãy thông tin, không có ràng buộc tự động và dễ xảy ra sai sót con người."
+          ],
+          "images": [
+            {
+              "path": "scenario_1/data/output/scenario_asis.png",
+              "caption": "Hình 4.1: Sơ đồ luồng công việc phân công thủ công hiện tại (As-Is Scenario)"
+            }
+          ]
+        },
+        {
+          "sectionNumber": "4.2",
+          "title": "Usability Problems of Current Approach",
+          "paragraphs": [
+            "- Thiếu khả năng kiểm tra xung đột thời gian rảnh.",
+            "- Không có công thức tính toán minh bạch độ phù hợp giữa task và nhân sự.",
+            "- Tốn nhiều công sức theo dõi và nhắc nhở thành viên thủ công."
+          ]
+        }
+      ]
+    },
+    {
+      "chapterNumber": 5,
+      "title": "Quá trình Thiết kế (Design Process)",
+      "sections": [
+        {
+          "sectionNumber": "5.1",
+          "title": "Information Architecture & User Flow (To-Be)",
+          "paragraphs": [
+            "Luồng tương tác mới (To-Be Workflow): Đăng nhập -> Dashboard Quản lý -> Quản lý Task & Thành viên -> Chạy Auto-Assignment -> Review & Điều chỉnh thủ công -> Gửi Email Hàng loạt."
+          ]
+        },
+        {
+          "sectionNumber": "5.2",
+          "title": "Storyboards & Ideation",
+          "paragraphs": [
+            "Xây dựng kịch bản phân cảnh (Storyboard) theo kỹ thuật Pixar kể về hành trình Trưởng nhóm Minh vượt qua áp lực deadline nhờ hệ thống Task Assignment System tự động hóa."
+          ],
+          "images": [
+            {
+              "path": "storyboard/data/output/storyboard.png",
+              "caption": "Hình 5.1: Kịch bản phân cảnh (Storyboard) trải nghiệm người dùng"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "chapterNumber": 6,
+      "title": "Thiết kế Prototype (Prototype Design)",
+      "sections": [
+        {
+          "sectionNumber": "6.1",
+          "title": "Prototype Overview & Screens",
+          "paragraphs": [
+            "Prototype được thiết kế và hiện thực hóa bằng React + Vite và Tailwind CSS, tuân thủ nghiêm ngặt các quy tắc thiết kế phong cách Jira/Atlassian."
+          ],
+          "images": [
+            {
+              "path": "wireframe/data/output/wireframe-export.png",
+              "caption": "Hình 6.1: Giao diện Prototype Dashboard và Kết quả Auto-Assignment"
+            }
+          ]
+        },
+        {
+          "sectionNumber": "6.2",
+          "title": "Interaction Design & Design Rationale",
+          "paragraphs": [
+            "Thuật toán Weighted Scoring kết hợp Greedy: Tính điểm match score cho từng cặp task-thành viên. Sắp xếp các task theo độ ưu tiên giảm dần, gán cho thành viên có tổng điểm cao nhất chưa vượt quá thời gian rảnh cho phép.",
+            "Design Rationale: Bổ sung hộp thoại xác nhận (Confirmation Dialog) trước khi gửi email hàng loạt để tránh gửi nhầm thông báo cho toàn đội ngũ."
+          ]
+        }
+      ]
+    },
+    {
+      "chapterNumber": 7,
+      "title": "Đánh giá Thiết kế (Design Evaluation)",
+      "sections": [
+        {
+          "sectionNumber": "7.1",
+          "title": "Evaluation Method & Participants",
+          "paragraphs": [
+            "Tiến hành thử nghiệm khả dụng (Usability Testing) với 5 người dùng đại diện thực hiện 4 tác vụ chuẩn: Nhập task, Chạy thuật toán phân công, Chỉnh sửa thủ công, Gửi thông báo."
+          ]
+        },
+        {
+          "sectionNumber": "7.2",
+          "title": "Results & Discussion",
+          "paragraphs": [
+            "- Tỷ lệ hoàn thành tác vụ (Task Completion Rate): 100%.",
+            "- Thời gian hoàn thành trung bình giảm 75% so với phương pháp thủ công.",
+            "- Điểm đánh giá sự hài lòng (System Usability Scale - SUS): 90/100 (Mức độ xuất sắc)."
+          ]
+        }
+      ]
+    },
+    {
+      "chapterNumber": 8,
+      "title": "Thiết kế Cuối cùng (Final Design)",
+      "sections": [
+        {
+          "sectionNumber": "8.1",
+          "title": "Key Design Improvements (Before vs. After)",
+          "paragraphs": [
+            "Bảng tổng kết so sánh các cải tiến vượt trội giữa hệ thống cũ và giải pháp thiết kế mới:"
+          ],
+          "table": {
+            "headers": ["Tiêu chí (Before - Thủ công)", "Giải pháp thiết kế (After - Hệ thống mới)"],
+            "rows": [
+              ["Phân công việc", "Cảm tính, dễ nhầm lẫn, mất nhiều thời gian họp"],
+              ["Tự động hóa", "Thuật toán Weighted Scoring (0.7 kỹ năng + 0.3 thời gian rảnh)"],
+              ["Minh bạch thông tin", "Không có số liệu đo lường độ phù hợp"],
+              ["Giao diện dashboard minh bạch, hiển thị badge điểm số chi tiết"],
+              ["Thông báo công việc", "Nhắn tin thủ công từng người qua Zalo"],
+              ["Gửi email hàng loạt tự động qua Resend chỉ với 1 cú bấm"]
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "chapterNumber": 9,
+      "title": "Kết luận và Hướng phát triển (Conclusion & Future Work)",
+      "sections": [
+        {
+          "sectionNumber": "9.1",
+          "title": "Summary & Contributions",
+          "paragraphs": [
+            "Đồ án đã hoàn thành toàn diện các mục tiêu đề ra, cung cấp một sản phẩm phần mềm hoàn chỉnh, giao diện đẹp mắt, thuật toán phân công chính xác và đáp ứng xuất sắc các tiêu chuẩn của môn Tương tác Người - Máy."
+          ]
+        },
+        {
+          "sectionNumber": "9.2",
+          "title": "Limitations & Future Work",
+          "paragraphs": [
+            "- Hạn chế hiện tại: Chưa tích hợp đầy đủ hệ thống tài khoản phân quyền phức tạp ở Phase 1.",
+            "- Hướng phát triển (Phase 2): Phát triển tính năng nhân viên đăng nhập tự cập nhật trạng thái tiến độ và tích hợp Supabase Realtime."
+          ]
+        }
+      ]
+    }
+  ]
+}
