@@ -1,0 +1,19 @@
+# Supabase
+.branches
+.temp
+
+# Environment files & Secrets
+.env
+.env.*
+!.env.example
+env
+code/env
+
+# Dependencies & Build output
+node_modules/
+dist/
+build/
+
+# OS files
+.DS_Store
+Thumbs.db

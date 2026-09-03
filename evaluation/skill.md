@@ -11,10 +11,9 @@ Hướng dẫn tái sử dụng để chạy đánh giá cho Task Assignment Sys
 ## Required Inputs
 
 - Prototype chạy được (`prototype/` build pass) hoặc `wireframe/index.html`.
-- **Final persona duy nhất:** `persona/final_persona/data/raw/student_leader_deep.json` + render `data/output/student_leader_deep.html|.png` (9 lớp: goals/tasks/pains/wishes/...). **Cấm dùng `persona/personas.md` draft** — mọi tuyển người, RQ, tasks phải map với final persona.
-- Danh sách tasks T1–T6 đã định nghĩa (plan.md §5 B2) — tasks đã map với tasks/goals của final persona (nhập task/member, chạy mapping, override, gửi mail, Kanban).
-- Form SUS 10 câu + script facilitator (đã gắn filter khớp final persona).
-- 5–7 participants **khớp final persona** (20–22t, SV năm 3–4, trưởng/điều phối nhóm 3–6 người, Laptop+Zalo+Sheets) — đã tuyển và ghi demographics đối chiếu.
+- Danh sách tasks T1–T6 đã định nghĩa (plan.md §5 B2).
+- Form SUS 10 câu + script facilitator.
+- 5–7 participants đúng persona (đã tuyển).
 
 ## Output
 
@@ -95,21 +94,19 @@ Mỗi issue phải có **bằng chứng** (ví dụ: 3/5 fail T4, quote "không 
 ## Validation Rules
 
 - **Thiếu 1 trong 7 bước** → mất điểm rubric (0.75). Phải đủ Goals→Improve.
-- **Participants sai target** (không khớp final persona `student_leader_deep.json`) → kết quả vô nghĩa; luôn ghi demographics và đối chiếu tuổi/role/kinh nghiệm/thiết bị với final persona.
-- **Dùng `persona/personas.md` thay final persona** → lỗi nguồn: phải dẫn `final_persona/data/raw/*.json` + PNG/HTML trong mọi báo cáo.
-- **Tasks không đo được** → mỗi task phải có tiêu chí success rõ và map với tasks/goals của final persona.
+- **Participants sai target** (không phải nhóm nhỏ) → kết quả vô nghĩa; luôn ghi demographics.
+- **Tasks không đo được** → mỗi task phải có tiêu chí success rõ.
 - **Chỉ ghi "thích/không thích"** → phải có rate/time/error + SUS, không chỉ cảm tính.
-- **Không ghi re-evaluation Q gắn final persona** → thiếu vòng lặp cải tiến.
+- **Không ghi re-evaluation Q** → thiếu vòng lặp cải tiến.
 
 ## Checklist cuối
 
-- [ ] Đủ 7 phần Goals/Tasks/Participants/Data/Conduct/Analyze/Improve — RQs/tasks map với final persona
-- [ ] ≥5 người **khớp final persona** `student_leader_deep.json`, có demographics đối chiếu (tuổi/role/kinh nghiệm/thiết bị/pains)
-- [ ] T1–T6 định nghĩa trước, có time/error/SUS, mỗi task map 1 task/goal của final persona
+- [ ] Đủ 7 phần Goals/Tasks/Participants/Data/Conduct/Analyze/Improve
+- [ ] ≥5 người đúng target, có demographics
+- [ ] T1–T6 định nghĩa trước, có time/error/SUS
 - [ ] Có screen recording + observation notes
 - [ ] Đã tính completion rate, mean time, SUS, (t-test nếu so ngưỡng)
-- [ ] Liệt kê 3–5 issues có evidence + severity + proposal + re-evaluation Q (mỗi issue gắn pain/wish của final persona)
-- [ ] Báo cáo dẫn **final persona PNG/HTML** (`student_leader_deep.png`) thay vì `personas.md` draft
+- [ ] Liệt kê 3–5 issues có evidence + severity + proposal + re-evaluation Q
 - [ ] Báo cáo sẵn sàng dán vào `report/` + `slides/`
 
 ## Failure Handling

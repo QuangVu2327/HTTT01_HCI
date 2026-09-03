@@ -1,6 +1,6 @@
-# Facilitator Script — Usability Test TaskAssign AI (Final Persona: Nguyễn Minh Anh)
+# Facilitator Script — Usability Test TaskAssign AI
 
-> Gửi cho người điều phối (facilitator) + note-taker. Mỗi phiên 25–30 phút, 1 người/lượt. Đọc **verbatim** phần trong `>`. Nguồn chuẩn: `persona/final_persona/data/raw/student_leader_deep.json` + `data/output/student_leader_deep.png` — tuyển người khớp final persona (SV năm 3–4, trưởng nhóm 4–6 người, Laptop+Zalo+Sheets).
+> Gửi cho người điều phối (facilitator) + note-taker. Mỗi phiên 25–30 phút, 1 người/lượt. Đọc **verbatim** phần trong `>`.
 
 ## Trước phiên (2 phút)
 
@@ -9,7 +9,7 @@
 
 > Xin chào, cảm ơn bạn tham gia đánh giá công cụ phân công việc nhóm TaskAssign AI. Buổi này nhằm kiểm tra **công cụ**, không phải kiểm tra bạn. Mọi thao tác sai đều là lỗi thiết kế — hãy nói to suy nghĩ (think-aloud). Bạn có đồng ý ghi màn hình + ghi âm không? (ký `consent_form.md`)
 
-3. Pre-questionnaire (ghi vào sheet, đối chiếu final persona): Năm học / Vai trò (trưởng nhóm 4–6 người?) / Công cụ (Messenger/Zalo? Sheets?) / Kinh nghiệm điều phối (số dự án, số người) / Thiết bị (Laptop+Phone?) — đánh dấu ✅ khớp cao / ⚠️ đối chứng
+3. Pre-questionnaire (ghi vào sheet): Năm học / Vai trò (trưởng nhóm / thành viên / GV) / Công cụ quen dùng (chat/Sheets/Trello...)
 
 ## Demo think-aloud 30s
 
@@ -60,10 +60,9 @@
 
 ## Ghi chép
 
-- Ghi `observation_sheet.csv`: time (bấm giờ từ khi đọc task tới success), success (1/0), errors, help requests, quotes — thêm cột `fit_final_persona` (✅/⚠️) để tách phân tích.
+- Ghi `observation_sheet.csv`: time (bấm giờ từ khi đọc task tới success), success (1/0), errors, help requests, quotes.
 - Nếu bí >2 phút: ghi `fail` + số lần hỏi help, không chỉ tay.
 - Nhắc think-aloud nhẹ nếu im lặng >15s.
-- Sau phiên: đối chiếu demographics với `student_leader_deep.json` (21t, SV4, 3+ năm, 4–6 người, Laptop+Zalo+Sheets, pains: cảm tính/nhắc tay/quá tải).
 
 ## Checklist mang theo
 

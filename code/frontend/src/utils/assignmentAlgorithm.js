@@ -42,8 +42,10 @@ export function calculateMatchScore(task, member, remainingHoursMap) {
  * Thuật toán phân công tự động (Greedy Match with Bottleneck & Priority handling)
  */
 export function runAutoAssignment(tasks, members) {
-  // Bản sao của tasks và members để tránh thay đổi state trực tiếp
-  const sortedTasks = [...tasks].sort((a, b) => {
+  // Lọc chỉ các task cần phân công (To Do)
+  const sortedTasks = [...tasks]
+    .filter(t => t.status === 'To Do')
+    .sort((a, b) => {
     // Sắp xếp theo độ ưu tiên: Cao (3) -> Trung bình (2) -> Thấp (1)
     const priorityWeight = { 'Cao': 3, 'Trung bình': 2, 'Thấp': 1 };
     const pA = priorityWeight[a.priority] || 2;
@@ -66,8 +68,11 @@ export function runAutoAssignment(tasks, members) {
     let bestScores = { skillScore: 0, availabilityScore: 0, totalScore: -1 };
     let fitsInTime = false;
     
-    // Quét tìm người phù hợp nhất
+  // Quét tìm người phù hợp nhất
     members.forEach(member => {
+      // BỎ QUA nếu task đã xong hoặc đang làm và đã có người nhận
+      if ((task.status === 'Doing' || task.status === 'Done') && task.assigneeId) return;
+
       const scores = calculateMatchScore(task, member, remainingHoursMap);
       const hasEnoughTime = remainingHoursMap[member.id] >= task.hours;
       

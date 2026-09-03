@@ -20,35 +20,26 @@ import {
   ArrowRight,
   Menu
 } from 'lucide-react';
+import { supabase } from './utils/supabaseClient';
+import Auth from './components/Auth';
 import { runAutoAssignment, calculateMatchScore } from './utils/assignmentAlgorithm';
 import ScoreTooltip from './components/ScoreTooltip';
 import Sidebar from './components/Sidebar';
 
 export default function App() {
-  // 1. STATE TOÀN CỤC
+  const [session, setSession] = useState(null);
+
+  // 1. STATE TOÀN CỤC (All hooks must be declared before any conditional returns)
   const [activeTab, setActiveTab] = useState('dashboard');
   const [isSidebarOpen, setIsSidebarOpen] = useState(true); // Sidebar state
-  const [skillPool, setSkillPool] = useState([
-    "Thiết kế", "Phân tích", "Soạn thảo", "Nghiên cứu", "Thuyết trình", "Tài chính", "Hậu cần", "Lập kế hoạch", "Biên tập"
-  ]);
+  const [skillPool, setSkillPool] = useState([]);
   const [newSkillTag, setNewSkillTag] = useState('');
   
   // Danh sách Tasks
-  const [tasks, setTasks] = useState([
-    { id: 1, name: "Nghiên cứu thị trường mục tiêu", hours: 8, tags: ["Nghiên cứu", "Phân tích"], priority: "Cao", status: "Doing", assigneeId: 1 },
-    { id: 2, name: "Soạn thảo kế hoạch dự án", hours: 10, tags: ["Lập kế hoạch", "Soạn thảo"], priority: "Cao", status: "To Do", assigneeId: null },
-    { id: 3, name: "Thiết kế poster & tài liệu truyền thông", hours: 6, tags: ["Thiết kế", "Biên tập"], priority: "Trung bình", status: "To Do", assigneeId: null },
-    { id: 4, name: "Chuẩn bị báo cáo tài chính", hours: 5, tags: ["Tài chính", "Phân tích"], priority: "Trung bình", status: "To Do", assigneeId: null },
-    { id: 5, name: "Chuẩn bị slide thuyết trình", hours: 4, tags: ["Thuyết trình", "Thiết kế"], priority: "Thấp", status: "Done", assigneeId: 3 }
-  ]);
+  const [tasks, setTasks] = useState([]);
   
   // Danh sách Thành viên
-  const [members, setMembers] = useState([
-    { id: 1, name: "Nguyễn Văn A", email: "a.nguyen@example.com", availableHours: 15, tags: ["Thiết kế", "Phân tích"] },
-    { id: 2, name: "Trần Thị B", email: "b.tran@example.com", availableHours: 12, tags: ["Phân tích", "Tài chính"] },
-    { id: 3, name: "Lê Hoàng C", email: "c.le@example.com", availableHours: 16, tags: ["Soạn thảo", "Nghiên cứu"] },
-    { id: 4, name: "Phạm Minh D", email: "d.pham@example.com", availableHours: 10, tags: ["Thiết kế", "Thuyết trình"] }
-  ]);
+  const [members, setMembers] = useState([]);
 
   // Các state tương tác phục vụ Auto-Assignment & Modal
   const [assignmentResults, setAssignmentResults] = useState([]);
@@ -80,6 +71,74 @@ export default function App() {
   const [overloads, setOverloads] = useState([]);
 
   useEffect(() => {
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      setSession(session);
+    });
+
+    const {
+      data: { subscription },
+    } = supabase.auth.onAuthStateChange((_event, session) => {
+      setSession(session);
+    });
+
+    return () => subscription.unsubscribe();
+  }, []);
+
+  // Sync with Supabase Database
+  useEffect(() => {
+    if (!session) return;
+    
+    async function fetchSupabaseData() {
+      try {
+        const { data: dbTasks, error: taskErr } = await supabase.from('tasks').select('*');
+        console.log("Supabase Tasks response:", dbTasks, taskErr);
+        if (taskErr) console.error("Task fetch error:", taskErr);
+        if (dbTasks && dbTasks.length > 0) {
+          setTasks(dbTasks.map(t => ({
+            id: t.id,
+            name: t.name,
+            hours: t.hours,
+            tags: t.tags || [],
+            priority: t.priority,
+            status: t.status,
+            assigneeId: t.assignee_id
+          })));
+        }
+
+        const { data: dbMembers, error: memberErr } = await supabase.from('members').select('*');
+        console.log("Supabase Members response:", dbMembers, memberErr);
+        if (memberErr) console.error("Member fetch error:", memberErr);
+        if (dbMembers && dbMembers.length > 0) {
+          setMembers(dbMembers.map(m => ({
+            id: m.id,
+            name: m.name,
+            email: m.email,
+            availableHours: m.available_hours,
+            tags: m.tags || []
+          })));
+        }
+
+        const { data: dbSkills, error: skillErr } = await supabase.from('skill_pool').select('*');
+        console.log("Supabase Skills response:", dbSkills, skillErr);
+        if (skillErr) console.error("Skill fetch error:", skillErr);
+        if (dbSkills && dbSkills.length > 0) {
+          setSkillPool(dbSkills.map(s => s.name));
+        } else {
+          const defaultSkills = ["Thiết kế", "Phân tích", "Soạn thảo", "Nghiên cứu", "Thuyết trình", "Tài chính", "Hậu cần", "Lập kế hoạch", "Biên tập"];
+          for (const s of defaultSkills) {
+            await supabase.from('skill_pool').insert({ name: s });
+          }
+          setSkillPool(defaultSkills);
+        }
+      } catch (err) {
+        console.error("Supabase sync error:", err);
+      }
+    }
+
+    fetchSupabaseData();
+  }, [session]);
+
+  useEffect(() => {
     // Tính tổng giờ làm việc được gán cho từng người hiện tại
     const currentWorkloads = {};
     members.forEach(m => {
@@ -109,6 +168,11 @@ export default function App() {
     setOverloads(currentOverloads);
   }, [tasks, members]);
 
+  if (!session) {
+    return <Auth />;
+  }
+
+
   // Trigger Toast Alert Helper
   const triggerToast = (msg, type = 'success') => {
     setToastMessage(msg);
@@ -118,13 +182,14 @@ export default function App() {
   };
 
   // 3. XỬ LÝ SỰ KIỆN QUẢN LÝ KỸ NĂNG (GLOBAL POOL)
-  const handleAddGlobalSkill = (e) => {
+  const handleAddGlobalSkill = async (e) => {
     e.preventDefault();
     if (!newSkillTag.trim()) return;
     if (skillPool.includes(newSkillTag.trim())) {
       triggerToast("Kỹ năng này đã tồn tại trong Pool!", "info");
       return;
     }
+    await supabase.from('skill_pool').insert({ name: newSkillTag.trim() });
     setSkillPool([...skillPool, newSkillTag.trim()]);
     setNewSkillTag('');
     triggerToast("Đã thêm kỹ năng mới thành công!");
@@ -156,22 +221,41 @@ export default function App() {
     setIsTaskModalOpen(true);
   };
 
-  const handleSaveTask = (e) => {
+  const handleSaveTask = async (e) => {
     e.preventDefault();
     if (!taskForm.name.trim()) {
       triggerToast("Vui lòng điền tên công việc!", "error");
       return;
     }
     if (editingTask) {
-      // Sửa
+      // Sửa trên Supabase
+      await supabase.from('tasks').update({
+        name: taskForm.name,
+        hours: taskForm.hours,
+        priority: taskForm.priority,
+        status: taskForm.status,
+        tags: taskForm.tags,
+        assignee_id: taskForm.assigneeId || null
+      }).eq('id', editingTask.id);
+
       setTasks(tasks.map(t => t.id === editingTask.id ? { ...t, ...taskForm } : t));
       triggerToast("Đã cập nhật công việc!");
     } else {
-      // Thêm mới
+      // Thêm mới trên Supabase
+      const { data } = await supabase.from('tasks').insert({
+        name: taskForm.name,
+        hours: taskForm.hours,
+        priority: taskForm.priority,
+        status: taskForm.status,
+        tags: taskForm.tags,
+        assignee_id: null
+      }).select().single();
+
+      const newId = data ? data.id : Date.now();
       const newTask = {
-        id: Date.now(),
+        id: newId,
         ...taskForm,
-        assigneeId: null // Mặc định chưa gán
+        assigneeId: null
       };
       setTasks([...tasks, newTask]);
       triggerToast("Đã thêm công việc mới!");
@@ -179,8 +263,9 @@ export default function App() {
     setIsTaskModalOpen(false);
   };
 
-  const handleDeleteTask = (id) => {
+  const handleDeleteTask = async (id) => {
     if (window.confirm("Bạn có chắc chắn muốn xóa công việc này?")) {
+      await supabase.from('tasks').delete().eq('id', id);
       setTasks(tasks.filter(t => t.id !== id));
       triggerToast("Đã xóa công việc khỏi danh sách.");
     }
@@ -208,18 +293,33 @@ export default function App() {
     setIsMemberModalOpen(true);
   };
 
-  const handleSaveMember = (e) => {
+  const handleSaveMember = async (e) => {
     e.preventDefault();
     if (!memberForm.name.trim() || !memberForm.email.trim()) {
       triggerToast("Vui lòng nhập đầy đủ Tên và Email!", "error");
       return;
     }
     if (editingMember) {
+      await supabase.from('members').update({
+        name: memberForm.name,
+        email: memberForm.email,
+        available_hours: memberForm.availableHours,
+        tags: memberForm.tags
+      }).eq('id', editingMember.id);
+
       setMembers(members.map(m => m.id === editingMember.id ? { ...m, ...memberForm } : m));
       triggerToast("Đã cập nhật thông tin thành viên!");
     } else {
+      const { data } = await supabase.from('members').insert({
+        name: memberForm.name,
+        email: memberForm.email,
+        available_hours: memberForm.availableHours,
+        tags: memberForm.tags
+      }).select().single();
+
+      const newId = data ? data.id : Date.now();
       const newMember = {
-        id: Date.now(),
+        id: newId,
         ...memberForm
       };
       setMembers([...members, newMember]);
@@ -228,8 +328,9 @@ export default function App() {
     setIsMemberModalOpen(false);
   };
 
-  const handleDeleteMember = (id) => {
+  const handleDeleteMember = async (id) => {
     if (window.confirm("Bạn có chắc chắn muốn xóa thành viên này?")) {
+      await supabase.from('members').delete().eq('id', id);
       setMembers(members.filter(m => m.id !== id));
       // Reset gán việc của thành viên này trong danh sách tasks
       setTasks(tasks.map(t => t.assigneeId === id ? { ...t, assigneeId: null } : t));
@@ -247,63 +348,99 @@ export default function App() {
   };
 
   // Import mock CSV helpers
-  const handleImportMockTasks = () => {
+  const handleImportMockTasks = async () => {
     const mockCSVTasks = [
-      { id: 101, name: "Khảo sát người dùng", hours: 6, tags: ["Nghiên cứu", "Phân tích"], priority: "Cao", status: "To Do", assigneeId: null },
-      { id: 102, name: "Viết nội dung truyền thông", hours: 10, tags: ["Soạn thảo", "Biên tập"], priority: "Cao", status: "To Do", assigneeId: null },
-      { id: 103, name: "Lập kế hoạch hậu cần", hours: 8, tags: ["Hậu cần", "Lập kế hoạch"], priority: "Trung bình", status: "To Do", assigneeId: null },
+      { name: "Khảo sát người dùng", hours: 6, tags: ["Nghiên cứu", "Phân tích"], priority: "Cao", status: "To Do", assignee_id: null },
+      { name: "Viết nội dung truyền thông", hours: 10, tags: ["Soạn thảo", "Biên tập"], priority: "Cao", status: "To Do", assignee_id: null },
+      { name: "Lập kế hoạch hậu cần", hours: 8, tags: ["Hậu cần", "Lập kế hoạch"], priority: "Trung bình", status: "To Do", assignee_id: null },
     ];
-    setTasks([...tasks, ...mockCSVTasks]);
-    triggerToast("Đã import thành công 3 công việc mẫu từ CSV giả lập!");
+    for (const t of mockCSVTasks) {
+      await supabase.from('tasks').insert(t);
+    }
+    const { data: dbTasks } = await supabase.from('tasks').select('*');
+    if (dbTasks) {
+      setTasks(dbTasks.map(t => ({
+        id: t.id,
+        name: t.name,
+        hours: t.hours,
+        tags: t.tags || [],
+        priority: t.priority,
+        status: t.status,
+        assigneeId: t.assignee_id
+      })));
+    }
+    triggerToast("Đã import thành công công việc mẫu lên Supabase!");
   };
 
-  const handleImportMockMembers = () => {
+  const handleImportMockMembers = async () => {
     const mockCSVMembers = [
-      { id: 101, name: "Vũ Thị E", email: "e.vu@example.com", availableHours: 15, tags: ["Thiết kế", "Thuyết trình"] },
-      { id: 102, name: "Đỗ Hoàng F", email: "f.do@example.com", availableHours: 20, tags: ["Tài chính", "Phân tích", "Lập kế hoạch"] }
+      { name: "Vũ Thị E", email: "e.vu@example.com", available_hours: 15, tags: ["Thiết kế", "Thuyết trình"] },
+      { name: "Đỗ Hoàng F", email: "f.do@example.com", available_hours: 20, tags: ["Tài chính", "Phân tích", "Lập kế hoạch"] }
     ];
-    setMembers([...members, ...mockCSVMembers]);
-    triggerToast("Đã import thành công 2 nhân sự mẫu từ CSV giả lập!");
+    for (const m of mockCSVMembers) {
+      await supabase.from('members').insert(m);
+    }
+    const { data: dbMembers } = await supabase.from('members').select('*');
+    if (dbMembers) {
+      setMembers(dbMembers.map(m => ({
+        id: m.id,
+        name: m.name,
+        email: m.email,
+        availableHours: m.available_hours,
+        tags: m.tags || []
+      })));
+    }
+    triggerToast("Đã import thành công nhân sự mẫu lên Supabase!");
   };
 
 
   // 6. XỬ LÝ CHẠY THUẬT TOÁN TỰ ĐỘNG PHÂN CÔNG (AUTO-ASSIGNMENT)
-  const handleTriggerAutoAssignment = () => {
+  const handleTriggerAutoAssignment = async () => {
     setIsMappingLoading(true);
     setLoadingStep(0);
     
-    // Giả lập loading mượt, từng bước của thuật toán để thể hiện "tương tác mới độc đáo"
     const steps = [
-      "Đang quét danh sách kỹ năng yêu cầu...",
-      "Đang phân tích quỹ thời gian khả dụng của thành viên...",
-      "Đang chạy thuật toán Weighted Scoring (Trọng số 70% Skill, 30% Time)...",
-      "Đang phân phối công việc tối ưu bằng thuật toán Greedy Match...",
+      "Đang kết nối Supabase Edge Function (run-mapping)...",
+      "Đang quét dữ liệu Task và Member trên Cloud...",
+      "Đang chạy thuật toán Weighted Scoring...",
       "Hoàn tất tính toán phân phối công việc!"
     ];
 
     const timer = setInterval(() => {
-      setLoadingStep(prev => {
-        if (prev < steps.length - 1) {
-          return prev + 1;
-        } else {
-          clearInterval(timer);
-          // Thực hiện thuật toán thực tế
-          const result = runAutoAssignment(tasks, members);
-          setAssignmentResults(result.assignments);
-          
-          // Cập nhật lại assigneeId trong danh sách tasks gốc dựa trên kết quả đề xuất
-          const updatedTasks = tasks.map(t => {
-            const proposed = result.assignments.find(a => a.taskId === t.id);
-            return proposed ? { ...t, assigneeId: proposed.memberId } : t;
-          });
-          setTasks(updatedTasks);
-          
-          setIsMappingLoading(false);
-          triggerToast("Hệ thống đã tự động tính toán và đề xuất phương án tối ưu nhất!");
-          return 0;
-        }
+      setLoadingStep(prev => (prev < steps.length - 1 ? prev + 1 : prev));
+    }, 350);
+
+    try {
+      // Gọi trực tiếp Supabase Edge Function: run-mapping
+      const { data, error } = await supabase.functions.invoke('run-mapping', {
+        body: { projectId: 'default-project-id' }
       });
-    }, 450);
+
+      clearInterval(timer);
+
+      if (error) {
+        throw new Error(error.message || "Lỗi gọi Edge Function");
+      }
+
+      console.log("Edge Function Response:", data);
+
+      // Chạy thuật toán frontend để hiển thị kết quả trực quan trên bảng
+      const result = runAutoAssignment(tasks, members);
+      setAssignmentResults(result.assignments);
+      const updatedTasks = tasks.map(t => {
+        const proposed = result.assignments.find(a => a.taskId === t.id);
+        return proposed ? { ...t, assigneeId: proposed.memberId } : t;
+      });
+      setTasks(updatedTasks);
+
+      setIsMappingLoading(false);
+      triggerToast("Đã gọi thành công Edge Function trên Supabase Cloud!");
+    } catch (err) {
+      clearInterval(timer);
+      setIsMappingLoading(false);
+      console.error("Mapping Error:", err);
+      triggerToast("Lỗi Edge Function: " + err.message, "error");
+    }
   };
 
   // 7. MANUAL OVERRIDE (ĐIỀU CHỈNH THỦ CÔNG)
@@ -342,14 +479,29 @@ export default function App() {
     triggerToast("Đã ghi nhận điều chỉnh thủ công của Quản lý!", "info");
   };
 
-  // 8. SIMULATING EMAIL NOTIFICATIONS VIA RESEND API
-  const handleConfirmSendEmails = () => {
+  // 8. SIMULATING EMAIL NOTIFICATIONS VIA RESEND API (CALLING SUPABASE EDGE FUNCTION)
+  const handleConfirmSendEmails = async () => {
     setIsResendModalOpen(false);
-    triggerToast("Đang chuẩn bị gửi email qua cổng Resend API...", "info");
+    triggerToast("Đang gọi Edge Function gửi email qua Resend...", "info");
     
-    setTimeout(() => {
-      triggerToast("Đã gửi thông báo email thành công đến " + members.length + " thành viên liên quan!", "success");
-    }, 1500);
+    try {
+      const { data, error } = await supabase.functions.invoke('send-assignment-emails', {
+        body: { 
+          assignments: assignmentResults,
+          managerName: "Quản lý Dự án"
+        }
+      });
+
+      if (error) {
+        throw new Error(error.message || "Lỗi gọi Edge Function gửi mail");
+      }
+
+      console.log("Email Edge Function Response:", data);
+      triggerToast("Đã gửi email thông báo thành công qua Resend Edge Function!", "success");
+    } catch (err) {
+      console.error("Email Error:", err);
+      triggerToast("Lỗi gửi email: " + err.message, "error");
+    }
   };
 
 
@@ -374,8 +526,12 @@ export default function App() {
                 {activeTab === 'dashboard' ? 'Tổng quan' : activeTab === 'tasks' ? 'Tasks' : activeTab === 'members' ? 'Nhân sự' : activeTab === 'assignment' ? 'Phân công AI' : 'Kanban'}
             </h2>
             <div className="flex items-center space-x-3">
-                <span className="text-[13px] bg-emerald-100 text-emerald-800 font-semibold px-2 py-0.5 rounded-full">Phase 1 Active</span>
-                <div className="w-8 h-8 rounded-full bg-atlassian-blue flex items-center justify-center text-white font-bold">MA</div>
+                <button
+                  onClick={() => supabase.auth.signOut()}
+                  className="text-xs bg-red-100 text-red-700 px-3 py-1.5 rounded hover:bg-red-200"
+                >
+                  Đăng xuất
+                </button>
             </div>
         </header>
 

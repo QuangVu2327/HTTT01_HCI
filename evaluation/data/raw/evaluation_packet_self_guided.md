@@ -1,6 +1,6 @@
-# Gói Tự Đánh Giá (Self-Guided) — Gửi cho người tham gia qua link/chat (Final Persona: Nguyễn Minh Anh)
+# Gói Tự Đánh Giá (Self-Guided) — Gửi cho người tham gia qua link/chat
 
-> Dành cho trường hợp không có facilitator trực tiếp. Người tham gia tự làm ở nhà (~20 phút), bật think-aloud ghi âm màn hình nếu được. **Bản này có thể forward qua Messenger/Zalo.** Nguồn chuẩn: `persona/final_persona/data/output/student_leader_deep.png` — ưu tiên người khớp final persona (SV năm 3–4, trưởng nhóm 4–6 người).
+> Dành cho trường hợp không có facilitator trực tiếp. Người tham gia tự làm ở nhà (~20 phút), bật think-aloud ghi âm màn hình nếu được. **Bản này có thể forward qua Messenger/Zalo.**
 
 ---
 
